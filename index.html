@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Menyusuri Nilai dalam Cerita Lintas Zaman</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--m1:#3a0a14;--m2:#5c1020;--m3:#800020;--m4:#a8334a;--gold:#f2c14e;--gold2:#b8860b;--cream:#fff3dc;--ink:#2a0810;--teal:#1f9a86;--tealD:#126356;--shadow:rgba(0,0,0,.45);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--m1:#2c070f}}
+:root[data-theme="dark"]{--m1:#2c070f}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;font-family:Nunito,system-ui,sans-serif;color:var(--cream);background:radial-gradient(ellipse at top,var(--m3),var(--m1) 70%) fixed,var(--m1);min-height:100vh;overflow-x:hidden}
+h1,h2,h3{font-family:"Cinzel Decorative",Georgia,serif;margin:.2em 0}
+.stars{position:fixed;inset:0;pointer-events:none;z-index:0}
+.stars i{position:absolute;width:6px;height:6px;background:var(--gold);border-radius:50%;opacity:.5;animation:tw 3s infinite alternate}
+@keyframes tw{to{opacity:.05;transform:scale(.4)}}
+@keyframes fl{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-16px) rotate(3deg)}}
+@keyframes wave{0%,100%{transform:skewY(0)}50%{transform:skewY(-8deg)}}
+@keyframes pop{0%{transform:scale(.6);opacity:0}70%{transform:scale(1.06)}100%{transform:scale(1);opacity:1}}
+@keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;gap:6px;justify-content:center;flex-wrap:wrap;padding:8px;background:rgba(40,6,14,.88);backdrop-filter:blur(6px);border-bottom:3px solid var(--gold2)}
+nav button{font:700 12px Nunito;padding:6px 10px;border-radius:20px;border:2px solid var(--gold2);background:var(--m2);color:var(--cream);cursor:pointer}
+nav button.on{background:var(--gold);color:var(--ink)}
+main{position:relative;z-index:1;max-width:1000px;margin:auto;padding:18px 14px 60px}
+.scr{display:none}.scr.on{display:block;animation:pop .5s}
+.btn{font:900 17px Nunito;padding:13px 26px;border-radius:16px;border:3px solid var(--ink);background:linear-gradient(var(--gold),#e0a526);color:var(--ink);cursor:pointer;box-shadow:0 7px 0 var(--gold2),0 12px 18px var(--shadow);transition:.15s}
+.btn:hover{transform:translateY(-3px)}.btn:active{transform:translateY(5px);box-shadow:0 2px 0 var(--gold2)}
+.btn.s{font-size:14px;padding:8px 16px;box-shadow:0 4px 0 var(--gold2)}
+.btn.m{background:linear-gradient(var(--m4),var(--m3));color:var(--cream);box-shadow:0 7px 0 var(--m1),0 12px 18px var(--shadow)}
+.card{background:linear-gradient(160deg,#7a1b30,var(--m2));border:3px solid var(--gold);border-radius:22px;padding:18px;box-shadow:0 9px 0 var(--m1),0 16px 26px var(--shadow),inset 0 3px 0 rgba(255,255,255,.2);margin:14px 0}
+.parch{background:linear-gradient(#fff3dc,#f0d9a8);color:var(--ink);border:3px solid var(--gold2);border-radius:18px;padding:16px;box-shadow:0 7px 0 #8a6414,0 12px 18px var(--shadow);font-size:1.05rem;line-height:1.6}
+.hero{text-align:center;padding-top:10px}
+.hero h1{font-size:clamp(1.7rem,6vw,3.2rem);color:var(--gold);text-shadow:0 4px 0 var(--m1),0 8px 14px #000;line-height:1.15}
+.hero p{max-width:560px;margin:10px auto 22px}
+.castle{width:min(560px,95%);filter:drop-shadow(0 18px 14px #000a)}
+.crown{font-size:3.4rem;display:inline-block;animation:fl 3s infinite}
+.flag{transform-origin:left;animation:wave 1.6s infinite}
+.grid{display:grid;gap:14px}.g3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}.g2{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.tp{font-size:1.15rem;line-height:1.6;text-align:center}
+.atp{perspective:700px}.atp .card{transition:.3s;transform:rotateX(0)}.atp .card:hover{transform:rotateX(6deg) translateY(-6px)}
+.badge{display:inline-block;background:var(--gold);color:var(--ink);font-weight:900;border-radius:12px;padding:3px 12px;margin-bottom:6px}
+.sq{aspect-ratio:1;border-radius:24px;border:4px solid var(--ink);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font:900 1.1rem Nunito;color:#fff;padding:10px;transition:.25s;box-shadow:0 11px 0 rgba(0,0,0,.45),0 18px 24px var(--shadow),inset 0 5px 0 rgba(255,255,255,.35)}
+.sq:hover{transform:translateY(-8px) rotate(-2deg) scale(1.03)}.sq .ic{font-size:3.4rem;animation:fl 3.2s infinite}.sq small{font-weight:600;opacity:.9}
+.sq.a{background:linear-gradient(#e0793a,#a63e0e)}.sq.v{background:linear-gradient(#c33a5b,#7a1330)}.sq.av{background:linear-gradient(#8e49b8,#541a7a)}.sq.k{background:linear-gradient(#27ad98,#116152)}
+.modal{position:fixed;inset:0;background:#000c;z-index:50;display:none;align-items:center;justify-content:center;padding:14px}
+.modal.on{display:flex}.mb{max-width:760px;width:100%;max-height:88vh;overflow:auto;background:linear-gradient(160deg,#6d1629,var(--m1));border:4px solid var(--gold);border-radius:24px;padding:20px;animation:pop .4s}
+.x{float:right}
+.line{padding:10px 14px;border-radius:14px;margin:8px 0;background:#ffffff14;border-left:6px solid var(--gold)}.line.on{background:var(--gold);color:var(--ink);transform:scale(1.02)}
+.stage{height:240px;border-radius:20px;background:linear-gradient(#26407a,#8a3b5a 70%,#4a1426);position:relative;overflow:hidden;border:3px solid var(--gold);text-align:center}
+.stage .big{font-size:5rem;margin-top:30px;animation:fl 2.4s infinite}.stage .cap{position:absolute;bottom:0;left:0;right:0;background:#000b;padding:10px;font-weight:700}
+.chip{display:inline-block;margin:5px;padding:9px 14px;border-radius:14px;background:var(--gold);color:var(--ink);font-weight:900;cursor:pointer;border:3px solid var(--ink);box-shadow:0 4px 0 var(--gold2)}.chip.sel{outline:4px solid #fff;transform:scale(1.1)}
+.bucket{min-height:110px;border-radius:18px;border:3px dashed var(--gold);padding:10px;cursor:pointer}
+input,select{width:100%;padding:13px;border-radius:12px;border:3px solid var(--gold2);font:700 16px Nunito;margin:6px 0 14px;background:var(--cream);color:var(--ink)}
+label{font-weight:900;color:var(--gold)}
+.bar{height:16px;border-radius:10px;background:#0006;overflow:hidden;border:2px solid var(--gold2)}.bar b{display:block;height:100%;background:linear-gradient(90deg,var(--gold),#fff3b0);transition:.4s}
+.ans{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+.ans button{font:900 clamp(.95rem,3.4vw,1.4rem) Nunito;padding:26px 8px;border-radius:20px;border:4px solid var(--ink);color:#fff;cursor:pointer;transition:.2s}
+.ans button:hover{transform:translateY(-6px) rotate(-1.5deg)}
+.cI{background:linear-gradient(#e7b028,#b07a0a);color:var(--ink)!important;box-shadow:0 9px 0 #6d4a05}.cE{background:linear-gradient(#27ad98,#116152);box-shadow:0 9px 0 #0a3a32}
+.fb{margin-top:14px;padding:12px;border-radius:14px;font-weight:800;animation:pop .3s}.ok{background:#1b7a4a}.no{background:#a01c1c}
+.chests{grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
+.chest{border-radius:18px;border:4px solid var(--ink);text-align:center;padding:18px 6px;font:900 1rem Nunito;color:#fff;cursor:pointer;box-shadow:0 8px 0 rgba(0,0,0,.5),inset 0 4px 0 rgba(255,255,255,.35);transition:.2s}
+.chest:hover{transform:translateY(-6px)}.chest .ic{font-size:2.6rem;display:block}.chest.lock{filter:grayscale(.8) brightness(.6);cursor:not-allowed}
+.slot{display:flex;gap:10px;align-items:center;padding:10px;margin:8px 0;border-radius:14px;border:3px dashed var(--gold);min-height:58px;cursor:pointer;background:#0003}
+.slot .n{flex:0 0 108px;font-weight:900;color:var(--gold)}.slot.good{border:3px solid #43d17b;background:#1b7a4a55}.slot.bad{border:3px solid #ff6b6b;animation:shake .4s}.slot.hl{box-shadow:0 0 0 4px #fff}
+.piece{background:var(--cream);color:var(--ink);padding:10px 12px;border-radius:12px;margin:7px 0;cursor:pointer;font-weight:700;border:3px solid var(--gold2);box-shadow:0 4px 0 #8a6414;transition:.15s}.piece:hover{transform:translateX(5px)}
+.help{display:flex;gap:8px;flex-wrap:wrap}.help .btn{background:linear-gradient(#b784e0,#7a3fb0);color:#fff}
+table{width:100%;border-collapse:collapse;font-size:.9rem}th,td{padding:8px;border-bottom:1px solid #fff4;text-align:left}tr.r{cursor:pointer}tr.r:hover{background:#fff2}
+.tag{padding:2px 8px;border-radius:8px;background:var(--gold);color:var(--ink);font-weight:900}
+.hide{display:none!important}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+
+.ch{width:104px;height:auto;filter:drop-shadow(0 10px 8px #0009);animation:bob 3s ease-in-out infinite;flex:0 0 auto}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-12px) rotate(2deg)}}
+@keyframes jump{0%,100%{transform:translateY(0)}40%{transform:translateY(-34px) scale(1.12) rotate(6deg)}}
+@keyframes flyx{from{left:-120px;top:14%}50%{top:22%}to{left:110vw;top:12%}}
+@keyframes drift{from{transform:translateX(-30vw)}to{transform:translateX(130vw)}}
+@keyframes fall{to{transform:translateY(105vh) rotate(720deg);opacity:.9}}
+@keyframes flick{0%,100%{transform:scale(1) rotate(-4deg)}50%{transform:scale(1.25,1.4) rotate(5deg)}}
+@keyframes wig{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+.fly{position:fixed;width:84px;z-index:3;pointer-events:none;animation:flyx 26s linear infinite}
+.cloud{position:fixed;z-index:0;background:#fff;opacity:.08;border-radius:60px;height:44px;pointer-events:none;animation:drift linear infinite}
+.cf{position:fixed;top:-20px;width:10px;height:15px;z-index:90;pointer-events:none;animation:fall 2.5s linear forwards}
+.hero{position:relative}.torch{position:absolute;top:150px;font-size:2.2rem;animation:flick .7s infinite;filter:drop-shadow(0 0 14px #ff9a1f)}
+.cast{display:flex;justify-content:center;align-items:flex-end;gap:6px;margin:-14px 0 6px;flex-wrap:wrap}
+.cast .ch:nth-child(2){width:128px;animation-delay:.5s}.cast .ch:nth-child(3){animation-delay:1s}.cast .ch:nth-child(4){width:84px;animation-delay:1.5s}
+.guide{display:flex;align-items:flex-end;gap:12px;margin:6px 0 10px}.guide .ch{width:84px}
+.bub{position:relative;background:var(--cream);color:var(--ink);font-weight:800;padding:10px 14px;border-radius:18px;border:3px solid var(--ink);box-shadow:0 5px 0 #0006;animation:pop .5s;max-width:420px}
+.bub:before{content:"";position:absolute;left:-14px;bottom:14px;border:8px solid transparent;border-right:12px solid var(--ink)}
+.mrow{display:flex;gap:12px;align-items:flex-end;margin-top:14px}.mrow .parch{flex:1}.mcol{text-align:center;flex:0 0 112px}.mcol .ch{width:100px}
+.ch.happy{animation:jump .6s}.ch.sad{animation:shake .5s,none}
+.sq,.chest,.card.tilt{will-change:transform}.chest:not(.lock){animation:wig 2.5s infinite}
+.snd{position:fixed;right:10px;top:calc(env(safe-area-inset-top,0px) + 62px);z-index:30;width:46px;height:46px;border-radius:50%;border:3px solid var(--ink);background:linear-gradient(#ffd96b,#e0a526);font-size:1.3rem;cursor:pointer;box-shadow:0 5px 0 var(--gold2)}
+.toast{position:fixed;left:50%;bottom:30px;transform:translate(-50%,40px);z-index:99;opacity:0;pointer-events:none;background:linear-gradient(#b784e0,#7a3fb0);color:#fff;font-weight:900;padding:14px 22px;border-radius:18px;border:3px solid #fff;box-shadow:0 8px 0 #3d1a66;transition:.3s;max-width:90vw;text-align:center}.toast.on{opacity:1;transform:translate(-50%,0)}
+nav button:nth-child(5n+1){background:#c0392b}nav button:nth-child(5n+2){background:#1f6fb0}nav button:nth-child(5n+3){background:#1f9a86}nav button:nth-child(5n+4){background:#7b45b0}nav button:nth-child(5n){background:#d9528a}
+nav button.on{background:var(--gold)!important;color:var(--ink)!important;transform:translateY(-2px) scale(1.08)}
+.btn.b{background:linear-gradient(#5ac8fa,#1f6fb0);color:#fff;box-shadow:0 7px 0 #0f3d66,0 12px 18px var(--shadow)}
+.btn.p{background:linear-gradient(#c58cf0,#7a3fb0);color:#fff;box-shadow:0 7px 0 #3d1a66,0 12px 18px var(--shadow)}
+.btn.g{background:linear-gradient(#5be08a,#1b9a54);color:#fff;box-shadow:0 7px 0 #0b5a30,0 12px 18px var(--shadow)}
+.btn.o{background:linear-gradient(#ff9f5a,#d9531a);color:#fff;box-shadow:0 7px 0 #7a2a06,0 12px 18px var(--shadow)}
+.btn.x{background:linear-gradient(#ff7a8a,#c0283e)!important;color:#fff!important;box-shadow:0 4px 0 #6a1020!important}
+.help .btn:nth-child(1){background:linear-gradient(#5be08a,#1b9a54)}.help .btn:nth-child(2){background:linear-gradient(#c58cf0,#7a3fb0)}.help .btn:nth-child(3){background:linear-gradient(#5ac8fa,#1f6fb0)}.help .btn:nth-child(4){background:linear-gradient(#f08ad0,#c0307f)}
+.mb.ma{background:linear-gradient(160deg,#b8571c,#4a1a05);border-color:#ffb066}.mb.mv{background:linear-gradient(160deg,#c33a5b,#4a0d1f);border-color:#ff9ab0}.mb.mav{background:linear-gradient(160deg,#8e49b8,#2c0d45);border-color:#d7a8ff}.mb.mk{background:linear-gradient(160deg,#1f9a86,#06342d);border-color:#7ff0d8}
+.fb.ok{background:linear-gradient(#2fc277,#1b7a4a)}.fb.no{background:linear-gradient(#e24b4b,#a01c1c)}
+.lb{display:flex;align-items:center;gap:12px;padding:12px;border-radius:20px;border:4px solid var(--ink);margin:12px 0;color:#fff;box-shadow:0 8px 0 rgba(0,0,0,.5),inset 0 4px 0 rgba(255,255,255,.3);animation:pop .5s backwards}
+.lb .md{font-size:2.4rem;width:52px;text-align:center}.lb .ch{width:62px}.lb .bd{flex:1}.lb .bar{margin-top:6px;background:#0005}.lb .bar b{background:linear-gradient(90deg,#fff3b0,#fff)}
+.lb .pt{font:900 1.6rem "Cinzel Decorative",serif;text-align:right}.lb small{opacity:.9;font-weight:700}
+@media(max-width:560px){.mcol{flex-basis:78px}.mcol .ch{width:70px}.lb .ch{display:none}}
+
+/* ===== ARTISTIK v4 ===== */
+@keyframes blink{0%,92%,100%{transform:scaleY(1)}95.5%{transform:scaleY(.08)}}
+@keyframes wv2{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(14deg)}}
+@keyframes flp{to{transform:rotate(-22deg) scaleY(.85)}}
+@keyframes wnd{from{opacity:.6}to{opacity:1}}
+@keyframes aur{to{transform:translate3d(6%,4%,0) rotate(8deg) scale(1.12)}}
+@keyframes shim{to{background-position:300% 0}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes spk{to{transform:translateY(26px) rotate(120deg) scale(0);opacity:0}}
+@keyframes ffl{0%{transform:translate(0,0);opacity:.15}50%{opacity:1}100%{transform:translate(60px,-130px);opacity:.15}}
+@keyframes petf{to{transform:translate(90px,112vh) rotate(540deg)}}
+@keyframes shn{0%,70%{left:-60%}100%{left:140%}}
+@keyframes flo{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes tw2{from{opacity:.1;transform:scale(.6)}to{opacity:1;transform:scale(1.2)}}
+@keyframes coinb{to{transform:translateY(-14px)}}
+.bl{transform-box:fill-box;transform-origin:center;animation:blink 4.2s infinite}
+.wv{transform-box:fill-box;transform-origin:15% 90%;animation:wv2 1.4s ease-in-out infinite}
+.flp{transform-box:fill-box;transform-origin:20% 50%;animation:flp .5s ease-in-out infinite alternate}
+.win{animation:wnd 2.2s infinite alternate}
+.ch{aspect-ratio:3/4}.fly{aspect-ratio:1}
+body::before{content:"";position:fixed;inset:-20%;z-index:0;pointer-events:none;background:radial-gradient(40% 40% at 20% 30%,rgba(255,106,140,.3),transparent 70%),radial-gradient(35% 35% at 80% 20%,rgba(242,193,78,.22),transparent 70%),radial-gradient(45% 45% at 70% 80%,rgba(140,70,200,.28),transparent 70%);filter:blur(30px);animation:aur 18s ease-in-out infinite alternate}
+.btn{position:relative;overflow:hidden}.btn:after{content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.6),transparent);transform:skewX(-20deg);transition:.7s}.btn:hover:after{left:140%}
+.sq{position:relative;overflow:hidden}.sq:before{content:"";position:absolute;top:-40%;left:-60%;width:40%;height:200%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:rotate(20deg);animation:shn 5s infinite}
+.spk{position:fixed;pointer-events:none;z-index:95;font-style:normal;font-size:16px;animation:spk .9s forwards;text-shadow:0 0 8px currentColor}
+.ff{position:fixed;width:6px;height:6px;border-radius:50%;background:#ffe9a0;box-shadow:0 0 12px 4px #ffd45a;z-index:1;pointer-events:none;animation:ffl ease-in-out infinite alternate}
+.pet{position:fixed;top:-24px;width:12px;height:16px;border-radius:50% 0 50% 50%;background:linear-gradient(135deg,#ff9ab0,#c0307f);opacity:.7;z-index:1;pointer-events:none;animation:petf linear infinite}
+.hero2{position:relative;text-align:center;padding:8px 0 24px}
+.rays{position:absolute;left:50%;top:40%;width:1000px;height:1000px;margin:-500px;background:repeating-conic-gradient(rgba(255,224,138,.16) 0 7deg,transparent 7deg 20deg);border-radius:50%;animation:spin 70s linear infinite;-webkit-mask-image:radial-gradient(circle,#000 0,transparent 62%);mask-image:radial-gradient(circle,#000 0,transparent 62%);pointer-events:none}
+.pill{position:relative;display:inline-block;padding:7px 18px;border-radius:30px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.4);backdrop-filter:blur(8px);font-weight:900;letter-spacing:.14em;font-size:.72rem;text-transform:uppercase}
+.ttl{position:relative;font-family:"Cinzel Decorative",Georgia,serif;font-size:clamp(2rem,8.4vw,4.4rem);line-height:1.08;margin:14px 0 6px;background:linear-gradient(90deg,#fff3b0,#f2c14e,#ff9ab0,#fff3b0);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shim 7s linear infinite;filter:drop-shadow(0 4px 0 #3a0a14) drop-shadow(0 12px 20px #000a)}
+.sub{position:relative;max-width:540px;margin:0 auto;opacity:.92}
+.scene{position:relative;max-width:660px;margin:6px auto 56px}
+.layer{transform:translate(var(--px,0),var(--py,0));transition:transform .25s ease-out}
+.scene .castle{width:100%;filter:drop-shadow(0 20px 20px #000a)}
+.cast2{position:absolute;left:0;right:0;bottom:-26px;display:flex;justify-content:center;align-items:flex-end;gap:1%}
+.cast2 .ch{width:clamp(58px,15.5vw,112px)}.cast2 .ch.big{width:clamp(78px,21vw,150px)}
+.cast2 .ch:nth-child(2n){animation-delay:.6s}.cast2 .ch:nth-child(3n){animation-delay:1.1s}
+.feat{position:relative;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:14px 0 22px}
+.feat span{padding:8px 14px;border-radius:30px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(8px);font-weight:800;font-size:.85rem;animation:flo 3s ease-in-out infinite}
+.feat span:nth-child(2){animation-delay:.4s}.feat span:nth-child(3){animation-delay:.8s}.feat span:nth-child(4){animation-delay:1.2s}
+.btn.big{font-size:1.25rem;padding:16px 38px;border-radius:40px}
+.stats{position:relative;display:flex;gap:12px;justify-content:center;margin-top:26px;flex-wrap:wrap}
+.stats div{padding:10px 18px;border-radius:18px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(8px)}
+.stats b{display:block;font:900 1.5rem "Cinzel Decorative",serif;color:var(--gold)}.stats small{font-weight:700;opacity:.85}
+.chests{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.chest{background:linear-gradient(160deg,rgba(255,255,255,.14),rgba(0,0,0,.4));border:3px solid var(--c,#f2c14e);padding:12px 8px 14px;box-shadow:0 0 28px -4px var(--c,#f2c14e),0 8px 0 rgba(0,0,0,.5);animation:none!important}
+.chest .cl{font:900 .95rem Nunito;margin-top:4px}.chest small{opacity:.85;font-weight:700}
+.chest.lock{filter:grayscale(.85) brightness(.65)}
+svg.cht{width:100%;max-width:150px;overflow:visible;filter:drop-shadow(0 8px 6px #0007)}
+.chest:not(.lock) .cht{animation:wig 2.6s ease-in-out infinite}
+.cht .ld{transform-origin:14px 64px;transition:transform .8s cubic-bezier(.3,1.7,.5,1)}
+.cht .lk{transition:.5s}.cht .coins{opacity:0;transform:translateY(16px);transition:.6s .2s}
+.cht .sp text{fill:#ffe08a;opacity:0}.chest:not(.lock) .sp text{animation:tw2 1.6s infinite alternate}.chest:not(.lock) .sp text:nth-child(2){animation-delay:.5s}.chest:not(.lock) .sp text:nth-child(3){animation-delay:1s}
+.chest.open .ld,.cht.open .ld{transform:rotate(-38deg) translateY(-4px)}
+.chest.open .lk,.cht.open .lk{opacity:0;transform:translateY(10px)}
+.chest.open .coins,.cht.open .coins{opacity:1;transform:translateY(-8px);animation:coinb 1s ease-in-out infinite alternate}
+.chest.open .glw circle,.cht.open .glw circle{animation:tw2 1.2s infinite alternate;opacity:.5}
+#pch{width:100px;flex:0 0 100px}
+textarea{width:100%;padding:13px;border-radius:12px;border:3px solid var(--gold2);font:700 16px Nunito;margin:6px 0 14px;background:var(--cream);color:var(--ink);resize:vertical}
+.yt{width:100%;aspect-ratio:16/9;border:0;border-radius:14px;background:#000}
+#pkm .mb{max-width:380px;text-align:center;border-color:#b784e0;background:linear-gradient(160deg,#7a3fb0,#2c0d45)}
+.mimg{max-width:100%;border-radius:14px;border:3px solid var(--gold);cursor:zoom-in;display:block;margin:8px auto}
+.mimg.z{position:fixed;inset:3%;width:94%;height:94%;max-width:none;object-fit:contain;z-index:140;background:#000d;cursor:zoom-out;margin:0;border-radius:0}
+.fc{border:4px solid var(--ink);border-radius:22px;padding:14px 4px;cursor:pointer;color:#fff;font:900 1.05rem Nunito;box-shadow:0 8px 0 rgba(0,0,0,.45),inset 0 4px 0 rgba(255,255,255,.35);transition:.2s}
+.fc:hover{transform:translateY(-6px) rotate(-2deg) scale(1.04)}.fc .em{font-size:3rem;display:block;animation:flo 2.5s infinite}
+.bar.tm b.warn{background:linear-gradient(90deg,#ff6b6b,#ffb199);animation:pul .5s infinite alternate}
+@keyframes pul{to{filter:brightness(1.4)}}
+#fm .mb{background:linear-gradient(160deg,#c33a5b,#3a0a14);border-color:#ff9ab0}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<linearGradient id="gR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8506d"/><stop offset="1" stop-color="#7a0f26"/></linearGradient>
+<linearGradient id="gG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe08a"/><stop offset="1" stop-color="#d9a21c"/></linearGradient>
+<linearGradient id="gP" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f08ad0"/><stop offset="1" stop-color="#8a3fb8"/></linearGradient>
+<linearGradient id="gS" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8edf2"/><stop offset="1" stop-color="#8793a3"/></linearGradient>
+<linearGradient id="gN" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6be08a"/><stop offset="1" stop-color="#1d9a5c"/></linearGradient>
+<radialGradient id="gF" cx=".4" cy=".35" r=".85"><stop offset="0" stop-color="#ffe9cf"/><stop offset="1" stop-color="#eeb185"/></radialGradient>
+<linearGradient id="gOv" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".38"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".4"/></linearGradient>
+<linearGradient id="gB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5aa0e8"/><stop offset="1" stop-color="#1a3f8a"/></linearGradient>
+<linearGradient id="gT" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5eead0"/><stop offset="1" stop-color="#14907c"/></linearGradient>
+<symbol id="raja" viewBox="0 0 120 160"><ellipse cx="60" cy="153" rx="32" ry="5" fill="#0006"/><g stroke="#2a0810" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"><g class="wv"><path d="M92 122Q108 118 110 98" stroke-width="15" fill="none"/><path d="M92 122Q108 118 110 98" stroke="#b5183b" stroke-width="9" fill="none"/><circle cx="110" cy="96" r="7.5" fill="url(#gF)"/><path d="M110 92V50" stroke-width="7" fill="none"/><path d="M110 92V50" stroke="url(#gG)" stroke-width="3.5" fill="none"/><circle cx="110" cy="44" r="8" fill="url(#gG)"/><circle cx="110" cy="44" r="3.5" fill="#e8506d" stroke="none"/></g><path d="M22 152Q18 108 60 100Q102 108 98 152Z" fill="url(#gR)"/><path d="M44 102L60 134L76 102Z" fill="url(#gG)"/><path d="M20 112Q60 132 100 112Q96 98 60 96Q24 98 20 112Z" fill="#fff"/><g fill="#2a0810" stroke="none"><circle cx="38" cy="108" r="2"/><circle cx="52" cy="114" r="2"/><circle cx="68" cy="114" r="2"/><circle cx="82" cy="108" r="2"/></g><circle cx="24" cy="128" r="7.5" fill="url(#gF)"/><circle cx="60" cy="64" r="34" fill="url(#gF)"/><path d="M28 72Q30 122 60 124Q90 122 92 72Q82 96 60 94Q38 96 28 72Z" fill="#f4f1ec"/><path d="M44 80Q52 72 60 80Q68 72 76 80Q68 87 60 83Q52 87 44 80Z" fill="#fff"/><path d="M28 42L31 12L46 28L60 6L74 28L89 12L92 42Q60 52 28 42Z" fill="url(#gG)"/><circle cx="60" cy="20" r="5" fill="#e8506d"/><circle cx="42" cy="32" r="3" fill="#4dd0e1"/><circle cx="78" cy="32" r="3" fill="#4dd0e1"/><path d="M38 54Q46 49 54 54M66 54Q74 49 82 54" fill="none" stroke="#e8e2da" stroke-width="4"/></g><g class="bl"><ellipse cx="46" cy="64" rx="5" ry="6.5" fill="#2a0810"/><ellipse cx="74" cy="64" rx="5" ry="6.5" fill="#2a0810"/></g><circle cx="44.5" cy="61.5" r="2" fill="#fff"/><circle cx="72.5" cy="61.5" r="2" fill="#fff"/><circle cx="35" cy="73" r="6" fill="#ff8fa0" opacity=".5"/><circle cx="85" cy="73" r="6" fill="#ff8fa0" opacity=".5"/><ellipse cx="44" cy="44" rx="10" ry="4" fill="#fff" opacity=".4"/></symbol>
+<symbol id="puteri" viewBox="0 0 120 160"><ellipse cx="60" cy="153" rx="32" ry="5" fill="#0006"/><g stroke="#2a0810" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"><path d="M22 72Q12 12 60 12Q108 12 98 72Q106 126 86 144Q72 126 60 122Q48 126 34 144Q14 126 22 72Z" fill="#2d1230"/><path d="M32 108Q60 98 88 108L112 152H8Z" fill="url(#gP)"/><path d="M42 100Q60 94 78 100L84 114Q60 122 36 114Z" fill="url(#gG)"/><path d="M8 152Q22 144 36 152Q48 144 60 152Q72 144 84 152Q98 144 112 152" fill="none" stroke="#fff" stroke-width="3"/><g class="wv"><path d="M84 110Q102 104 106 86" stroke-width="14" fill="none"/><path d="M84 110Q102 104 106 86" stroke="#f08ad0" stroke-width="8" fill="none"/><circle cx="106" cy="82" r="7" fill="url(#gF)"/><path d="M106 76V66" stroke="#1d9a5c" stroke-width="3"/><circle cx="106" cy="60" r="5" fill="#ff7aa8" stroke-width="2"/><circle cx="100" cy="64" r="5" fill="#ff7aa8" stroke-width="2"/><circle cx="112" cy="64" r="5" fill="#ff7aa8" stroke-width="2"/><circle cx="106" cy="64" r="3.4" fill="#ffd45a" stroke-width="1.5"/></g><circle cx="60" cy="66" r="32" fill="url(#gF)"/><path d="M28 64Q26 22 60 24Q94 22 92 64Q82 40 60 42Q38 40 28 64Z" fill="#2d1230"/><path d="M36 28L42 14L52 26L60 8L68 26L78 14L84 28Q60 36 36 28Z" fill="url(#gG)"/><circle cx="60" cy="17" r="4" fill="#4dd0e1"/></g><g class="bl"><ellipse cx="46" cy="68" rx="6.5" ry="8.5" fill="#3b1b4e"/><ellipse cx="74" cy="68" rx="6.5" ry="8.5" fill="#3b1b4e"/></g><circle cx="44" cy="65" r="2.6" fill="#fff"/><circle cx="72" cy="65" r="2.6" fill="#fff"/><circle cx="48" cy="71" r="1.3" fill="#fff"/><circle cx="76" cy="71" r="1.3" fill="#fff"/><path d="M53 81Q60 87 67 81" fill="none" stroke="#2a0810" stroke-width="2.5" stroke-linecap="round"/><circle cx="35" cy="76" r="5.5" fill="#ff8fa0" opacity=".6"/><circle cx="85" cy="76" r="5.5" fill="#ff8fa0" opacity=".6"/><path d="M14 98l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#fff" class="win"/><path d="M104 120l2 4 4 2-4 2-2 4-2-4-4-2 4-2z" fill="#fff" class="win"/></symbol>
+<symbol id="ksatria" viewBox="0 0 120 160"><ellipse cx="60" cy="153" rx="32" ry="5" fill="#0006"/><g stroke="#2a0810" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"><path d="M30 112Q4 120 8 154L40 150Z" fill="url(#gR)"/><path d="M24 152Q20 108 60 100Q100 108 96 152Z" fill="url(#gS)"/><path d="M30 126H90" stroke-width="2"/><circle cx="60" cy="122" r="9" fill="url(#gG)"/><path d="M55 124l2-6 3 3 3-3 2 6z" fill="#b5183b" stroke-width="1.5"/><path d="M4 100h26v22Q17 142 4 122Z" fill="url(#gR)"/><path d="M12 114l2-5 3 3 3-3 2 5z" fill="url(#gG)" stroke-width="1.5"/><g class="wv"><path d="M92 124Q106 118 106 104" stroke-width="15" fill="none"/><path d="M92 124Q106 118 106 104" stroke="#aab4c2" stroke-width="9" fill="none"/><circle cx="106" cy="102" r="7.5" fill="url(#gS)"/><path d="M106 96V42" stroke-width="8" fill="none"/><path d="M106 96V42" stroke="#e8edf2" stroke-width="4" fill="none"/><path d="M98 96h16" stroke-width="6"/><path d="M98 96h16" stroke="#f2c14e" stroke-width="3"/></g><circle cx="60" cy="66" r="33" fill="url(#gF)"/><path d="M26 66Q24 20 60 20Q96 20 94 66L84 54Q60 44 36 54Z" fill="url(#gS)"/><path d="M60 20Q50 2 66 2Q84 6 72 24Z" fill="url(#gR)"/><path d="M38 58L54 60M82 58L66 60" stroke-width="4" fill="none"/></g><g class="bl"><ellipse cx="46" cy="69" rx="5" ry="6.5" fill="#2a0810"/><ellipse cx="74" cy="69" rx="5" ry="6.5" fill="#2a0810"/></g><circle cx="44.5" cy="66.5" r="2" fill="#fff"/><circle cx="72.5" cy="66.5" r="2" fill="#fff"/><path d="M52 82Q60 89 68 82" fill="none" stroke="#2a0810" stroke-width="2.5" stroke-linecap="round"/><circle cx="35" cy="76" r="5.5" fill="#ff8fa0" opacity=".5"/><circle cx="85" cy="76" r="5.5" fill="#ff8fa0" opacity=".5"/><ellipse cx="44" cy="30" rx="10" ry="4" fill="#fff" opacity=".6"/></symbol>
+<symbol id="wazir" viewBox="0 0 120 160"><ellipse cx="60" cy="153" rx="32" ry="5" fill="#0006"/><g stroke="#2a0810" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"><path d="M20 152Q16 106 60 98Q104 106 100 152Z" fill="url(#gB)"/><path d="M54 100V152H66V100Z" fill="url(#gG)"/><path d="M22 130Q60 142 98 130" fill="none" stroke="#f2c14e" stroke-width="5"/><g class="wv"><path d="M30 124Q14 120 12 104" stroke-width="15" fill="none"/><path d="M30 124Q14 120 12 104" stroke="#2b5fb8" stroke-width="9" fill="none"/><circle cx="12" cy="102" r="7.5" fill="url(#gF)"/><rect x="0" y="80" width="14" height="30" rx="6" fill="#fff3dc"/><path d="M4 88h6M4 94h6M4 100h6" stroke-width="1.5"/></g><circle cx="96" cy="128" r="7.5" fill="url(#gF)"/><circle cx="60" cy="68" r="32" fill="url(#gF)"/><path d="M32 78Q34 132 60 136Q86 132 88 78Q78 100 60 98Q42 100 32 78Z" fill="#dcdfe6"/><path d="M44 84Q52 77 60 84Q68 77 76 84Q68 90 60 87Q52 90 44 84Z" fill="#fff"/><path d="M26 56Q26 18 60 16Q94 18 94 56Q60 40 26 56Z" fill="#fff3dc"/><path d="M32 44Q60 28 90 44M30 52Q60 36 92 52" fill="none" stroke="#d9b36a" stroke-width="2"/><path d="M60 24Q54 2 72 2Q72 16 64 26Z" fill="url(#gP)"/><circle cx="60" cy="32" r="6" fill="#4dd0e1"/><circle cx="46" cy="68" r="10" fill="#fff" fill-opacity=".25" stroke="#b8860b" stroke-width="2.5"/><circle cx="74" cy="68" r="10" fill="#fff" fill-opacity=".25" stroke="#b8860b" stroke-width="2.5"/><path d="M56 68h8" stroke="#b8860b" stroke-width="2.5"/></g><g class="bl"><ellipse cx="46" cy="69" rx="3.6" ry="5" fill="#2a0810"/><ellipse cx="74" cy="69" rx="3.6" ry="5" fill="#2a0810"/></g><circle cx="45" cy="67" r="1.5" fill="#fff"/><circle cx="73" cy="67" r="1.5" fill="#fff"/><circle cx="35" cy="80" r="5" fill="#ff8fa0" opacity=".45"/><circle cx="85" cy="80" r="5" fill="#ff8fa0" opacity=".45"/></symbol>
+<symbol id="naga" viewBox="0 0 120 160"><ellipse cx="60" cy="153" rx="32" ry="5" fill="#0006"/><g stroke="#2a0810" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"><path d="M26 138Q2 146 8 114Q14 130 32 126Z" fill="url(#gT)"/><g class="flp"><path d="M88 100Q118 70 114 114Q102 106 96 114Z" fill="url(#gR)"/></g><path d="M32 100Q2 70 6 114Q18 106 24 114Z" fill="url(#gR)"/><ellipse cx="60" cy="122" rx="30" ry="30" fill="url(#gT)"/><ellipse cx="60" cy="130" rx="18" ry="22" fill="#ffe9a8"/><path d="M48 124h24M48 134h24M50 144h20" stroke-width="2" fill="none"/><ellipse cx="42" cy="150" rx="11" ry="6" fill="url(#gT)"/><ellipse cx="78" cy="150" rx="11" ry="6" fill="url(#gT)"/><circle cx="30" cy="118" r="7" fill="url(#gT)"/><circle cx="90" cy="118" r="7" fill="url(#gT)"/><circle cx="60" cy="62" r="32" fill="url(#gT)"/><path d="M38 40Q28 14 46 22Z" fill="url(#gG)"/><path d="M82 40Q92 14 74 22Z" fill="url(#gG)"/><path d="M50 32l10-14 10 14z" fill="url(#gG)"/><ellipse cx="60" cy="76" rx="17" ry="12" fill="#8ff0dc"/><circle cx="54" cy="73" r="1.8" fill="#2a0810" stroke="none"/><circle cx="66" cy="73" r="1.8" fill="#2a0810" stroke="none"/><path d="M53 80Q60 87 67 80" fill="none"/></g><g class="bl"><ellipse cx="45" cy="56" rx="7" ry="9" fill="#fff"/><ellipse cx="75" cy="56" rx="7" ry="9" fill="#fff"/><ellipse cx="46" cy="58" rx="4" ry="6" fill="#2a0810"/><ellipse cx="74" cy="58" rx="4" ry="6" fill="#2a0810"/></g><circle cx="44.5" cy="55" r="1.8" fill="#fff"/><circle cx="72.5" cy="55" r="1.8" fill="#fff"/><circle cx="32" cy="72" r="5" fill="#ff8fa0" opacity=".55"/><circle cx="88" cy="72" r="5" fill="#ff8fa0" opacity=".55"/><ellipse cx="44" cy="42" rx="9" ry="3.5" fill="#fff" opacity=".4"/></symbol>
+<symbol id="nuri" viewBox="0 0 100 100"><g stroke="#2a0810" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"><path d="M22 66L4 96L24 88L12 98L34 84Z" fill="#e8506d"/><path d="M26 70L14 94L32 82Z" fill="#ffd45a"/><ellipse cx="48" cy="62" rx="26" ry="24" fill="url(#gN)"/><ellipse cx="50" cy="70" rx="14" ry="14" fill="#c9f5a8" stroke="none"/><g class="flp"><path d="M32 58Q54 40 72 64Q54 82 32 70Z" fill="#127a58"/><path d="M38 62Q54 52 66 64" fill="none" stroke="#6be08a" stroke-width="2"/></g><path d="M48 40Q46 24 58 28Q56 20 68 24Q62 30 64 38Z" fill="#e8506d"/><circle cx="64" cy="42" r="19" fill="url(#gN)"/><path d="M80 40Q100 42 92 56Q84 52 80 48Z" fill="url(#gG)"/><circle cx="68" cy="38" r="5.5" fill="#fff"/><circle cx="69.5" cy="38" r="3" fill="#2a0810" stroke="none"/><path d="M44 84l-2 8M54 86l2 8" stroke="#f2c14e" stroke-width="3"/></g><circle cx="70" cy="36.5" r="1.2" fill="#fff"/><circle cx="62" cy="48" r="5" fill="#ff8fa0" opacity=".6"/><ellipse cx="40" cy="48" rx="8" ry="3" fill="#fff" opacity=".4"/></symbol>
+</defs></svg>
+<div class="stars" id="stars"></div>
+<svg class="ch fly" viewBox="0 0 100 100"><use href="#nuri"/></svg>
+<button class="snd" id="snd" onclick="panelMusik()" title="Musik pengiring">🎵</button>
+<div id="toast" class="toast"></div>
+<nav id="nav"></nav>
+<main>
+
+<section class="scr on hero2" id="s0">
+  <div class="rays"></div>
+  <div class="pill">✦ Bahasa Indonesia • Hikayat Lintas Zaman ✦</div>
+  <h1 class="ttl">Menyusuri Nilai<br>dalam Cerita<br>Lintas Zaman</h1>
+  <p class="sub">Jelajahi istana hikayat dan temukan pesan serta nilai dari kisah raja, puteri, dan pahlawan masa lampau.</p>
+  <div class="scene">
+    <div class="layer" data-d="-16"><svg class="castle" viewBox="0 -40 600 340" aria-label="Istana kerajaan"><defs><radialGradient id="gMoon" cx=".4" cy=".4" r=".7"><stop offset="0" stop-color="#fffbe6"/><stop offset="1" stop-color="#ffd98a"/></radialGradient><linearGradient id="gWall" x1="0" x2="1"><stop offset="0" stop-color="#e59aa8"/><stop offset=".5" stop-color="#ffe4cf"/><stop offset="1" stop-color="#b86575"/></linearGradient><linearGradient id="gHill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7a1b30"/><stop offset="1" stop-color="#2a0810"/></linearGradient></defs>
+<circle cx="300" cy="115" r="125" fill="#ffd98a" opacity=".16"/><circle cx="300" cy="115" r="72" fill="url(#gMoon)"/>
+<path d="M0 225L80 140 150 210 240 120 330 215 420 135 500 205 600 150V300H0Z" fill="#4a0d1f" opacity=".85"/>
+<g stroke="#2a0810" stroke-width="4" stroke-linejoin="round"><rect x="60" y="150" width="56" height="110" fill="url(#gWall)"/><polygon points="50,152 88,80 126,152" fill="url(#gR)"/><rect x="484" y="150" width="56" height="110" fill="url(#gWall)"/><polygon points="474,152 512,80 550,152" fill="url(#gR)"/><rect x="150" y="120" width="70" height="140" fill="url(#gWall)"/><polygon points="140,122 185,40 230,122" fill="url(#gR)"/><rect x="380" y="120" width="70" height="140" fill="url(#gWall)"/><polygon points="370,122 415,40 460,122" fill="url(#gR)"/><rect x="116" y="190" width="368" height="70" fill="url(#gWall)"/><rect x="240" y="90" width="120" height="170" fill="url(#gWall)"/><polygon points="228,92 300,0 372,92" fill="url(#gR)"/><path d="M262 260V214a38 38 0 0 1 76 0V260Z" fill="#3a0a14"/></g>
+<g class="win" fill="#ffd45a" stroke="#2a0810" stroke-width="2"><rect x="280" y="118" width="40" height="50" rx="20"/><rect x="80" y="172" width="16" height="30" rx="8"/><rect x="504" y="172" width="16" height="30" rx="8"/><rect x="177" y="150" width="16" height="32" rx="8"/><rect x="407" y="150" width="16" height="32" rx="8"/><rect x="140" y="204" width="14" height="24" rx="7"/><rect x="446" y="204" width="14" height="24" rx="7"/></g>
+<path d="M280 214V260M300 214V260M320 214V260M262 238H338" stroke="#8a6a3a" stroke-width="3"/>
+<g stroke="#2a0810" stroke-width="3"><line x1="300" y1="0" x2="300" y2="-30"/><line x1="88" y1="80" x2="88" y2="54"/><line x1="512" y1="80" x2="512" y2="54"/><line x1="185" y1="40" x2="185" y2="14"/><line x1="415" y1="40" x2="415" y2="14"/></g>
+<g class="flag" fill="#f2c14e" stroke="#2a0810" stroke-width="2.5"><polygon points="300,-30 340,-20 300,-10"/><polygon points="88,54 120,62 88,70"/><polygon points="512,54 544,62 512,70"/><polygon points="185,14 217,22 185,30"/><polygon points="415,14 447,22 415,30"/></g>
+<path d="M0 272Q150 236 300 264Q450 236 600 272V300H0Z" fill="url(#gHill)"/><path d="M0 272Q150 236 300 264Q450 236 600 272" fill="none" stroke="#ff9ab0" stroke-width="2" opacity=".5"/></svg></div>
+    <div class="layer cast2" data-d="26"><svg class="ch"><use href="#wazir"/></svg><svg class="ch"><use href="#ksatria"/></svg><svg class="ch big"><use href="#raja"/></svg><svg class="ch"><use href="#puteri"/></svg><svg class="ch"><use href="#naga"/></svg></div>
+  </div>
+  <div class="feat"><span>🎧 Auditori</span><span>🖼️ Visual</span><span>🎬 Audiovisual</span><span>🤹 Kinestetik</span></div>
+  <button class="btn big" onclick="go(1)">✨ Mulai Perjalanan</button>
+  <div class="stats"><div><b>6</b><small>Kelompok</small></div><div><b>96</b><small>Kutipan Hikayat</small></div><div><b>6</b><small>Kotak Harta</small></div></div>
+</section>
+
+<section class="scr" id="s1">
+  <h2>📜 Tujuan Pembelajaran</h2><div class="guide"><svg class="ch"><use href="#ksatria"/></svg><div class="bub">Inilah titah tujuan belajar kita, wahai ksatria cilik!</div></div>
+  <div class="card parch tp"><b>Murid mampu mengevaluasi nilai-nilai moral, pesan, serta unsur pembangun (intrinsik dan ekstrinsik) dari teks sastra klasik (Hikayat) berbentuk aural secara kritis.</b></div>
+  <div class="grid g3 atp">
+    <div class="card"><span class="badge">ATP 1.1</span><p>Murid mampu mengidentifikasi informasi penting dan gambaran umum isi teks hikayat yang disimak, dibaca, dan/atau dipirsa secara tepat.</p></div>
+    <div class="card"><span class="badge">ATP 1.2</span><p>Murid mampu mengidentifikasi struktur teks hikayat (abstrak, orientasi, komplikasi, evaluasi, resolusi, koda), unsur intrinsik (tema, tokoh dan penokohan, alur, latar, sudut pandang, amanat) berdasarkan bukti dalam teks, serta unsur ekstrinsik (nilai pendidikan, moral, sosial, religius, dan budaya).</p></div>
+    <div class="card"><span class="badge">ATP 1.3</span><p>Murid mampu menganalisis hubungan antarunsur intrinsik dan ekstrinsik dalam membangun cerita pada teks hikayat berdasarkan informasi yang ditemukan.</p></div>
+  </div>
+  <button class="btn b" onclick="go(2)">Pilih Gaya Belajar ➜</button>
+</section>
+
+<section class="scr" id="s2">
+  <h2>🏰 Gerbang Materi</h2><div class="guide"><svg class="ch"><use href="#puteri"/></svg><div class="bub">Pilih ruanganmu. Setiap pintu menyimpan harta ilmu!</div></div>
+  <p>Pilih ruangan belajar yang paling cocok denganmu. Setiap ruangan menyajikan materi yang sama dengan cara berbeda!</p>
+  <div class="grid g2">
+    <div class="sq a" onclick="mode('a')"><span class="ic">🎧</span>AUDITORI<small>Dengarkan narasi</small></div>
+    <div class="sq v" onclick="mode('v')"><span class="ic">🖼️</span>VISUAL<small>Lihat peta & kartu</small></div>
+    <div class="sq av" onclick="mode('av')"><span class="ic">🎬</span>AUDIOVISUAL<small>Teater istana</small></div>
+    <div class="sq k" onclick="mode('k')"><span class="ic">🤹</span>KINESTETIK<small>Pilah & praktik</small></div>
+  </div>
+  <button class="btn p" style="margin-top:24px" onclick="go(3)">Baca Ringkasan Materi ➜</button> <button class="btn o" style="margin-top:24px" onclick="panelKelola()">➕ Kelola Materi Tambahan</button><p id="mtinfo" style="font-weight:800;color:var(--gold)">Memuat materi tambahan…</p>
+</section>
+
+<section class="scr" id="s3">
+  <h2>📚 Materi Ringkas</h2><div class="guide"><svg class="ch"><use href="#raja"/></svg><div class="bub">Simaklah titah baginda ini baik-baik, anakku.</div></div>
+  <div class="card parch"><b>Hikayat</b> ialah karya sastra Melayu klasik berupa kisah tentang raja, bangsawan, dan pahlawan, sering memuat unsur kesaktian, dan awalnya dituturkan secara lisan (aural) sebelum dituliskan.</div>
+  <div class="grid g3">
+    <div class="card"><h3>🧩 Struktur</h3><ol><li><b>Abstrak</b>: ringkasan pembuka</li><li><b>Orientasi</b>: latar, waktu, tokoh</li><li><b>Komplikasi</b>: munculnya masalah</li><li><b>Evaluasi</b>: tanggapan atas masalah</li><li><b>Resolusi</b>: penyelesaian</li><li><b>Koda</b>: penutup/pesan</li></ol></div>
+    <div class="card"><h3>🛡️ Intrinsik</h3><p>Unsur <i>di dalam</i> teks: <b>tema</b>, <b>tokoh &amp; penokohan</b>, <b>alur</b>, <b>latar</b> (tempat, waktu, suasana), <b>sudut pandang</b>, dan <b>amanat</b>.</p></div>
+    <div class="card"><h3>🌍 Ekstrinsik</h3><p>Unsur <i>di luar</i> teks yang memengaruhi isi: nilai <b>pendidikan</b>, <b>moral</b>, <b>sosial</b>, <b>religius</b>, dan <b>budaya</b>.</p></div>
+  </div>
+  <div class="card parch">🔗 <b>Hubungan antarunsur:</b> tokoh yang jujur (intrinsik) mencerminkan nilai moral (ekstrinsik); latar istana dan adat bersanding menunjukkan nilai budaya; alur dari konflik menuju damai menegaskan amanat. Carilah <b>bukti dalam kutipan</b> sebelum menentukan jawaban!</div>
+  <button class="btn g" onclick="go(4)">Siap Bermain ➜</button>
+</section>
+
+<section class="scr" id="s4">
+  <h2>🪪 Daftar Ksatria</h2><div class="guide"><svg class="ch"><use href="#nuri"/></svg><div class="bub">Tuliskan namamu agar hamba dapat mencatatnya!</div></div>
+  <div class="card">
+    <label>NAMA LENGKAP</label><input id="nama" placeholder="Nama lengkap" autocomplete="off">
+    <label>KELAS</label><input id="kelas" placeholder="Contoh: X-3">
+    <label>KELOMPOK</label><select id="kel"><option value="">— pilih kelompok —</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
+    <button class="btn o" onclick="startGame()">🎮 Masuk Arena Game</button>
+  </div>
+</section>
+
+<section class="scr" id="s5">
+  <h2>⚔️ Arena: Intrinsik atau Ekstrinsik?</h2>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;font-weight:900"><span id="gk"></span><span id="gs"></span></div>
+    <div class="bar"><b id="gb" style="width:0"></b></div><div style="display:flex;align-items:center;gap:10px;margin-top:8px"><div class="bar tm" style="flex:1"><b id="tbar" style="width:100%"></b></div><b id="tsec" style="min-width:74px;text-align:right">⏱ 30 dtk</b></div>
+    <div class="mrow"><div class="mcol"><div class="bub" id="bub" style="font-size:.8rem;padding:6px 9px;margin-bottom:10px">Ayo tentukan!</div><svg class="ch" id="mas"><use id="mu" href="#raja"/></svg></div><div class="parch" id="gq"></div></div>
+    <div class="ans"><button class="cI" onclick="jawab('I')">🛡️ INTRINSIK</button><button class="cE" onclick="jawab('E')">🌍 EKSTRINSIK</button></div>
+    <div id="gf"></div>
+  </div>
+</section>
+
+<section class="scr" id="s6">
+  <h2>🗝️ Asesmen: Susun Struktur Hikayat</h2><div class="guide"><svg class="ch"><use href="#puteri"/></svg><div class="bub">Buka kotak kelompokmu dan susun kisahnya dengan benar!</div></div>
+  <div id="chests" class="grid chests"></div>
+  <div id="puz" class="hide">
+    <div class="card"><div style="display:flex;align-items:center;gap:12px"><div id="pch"></div><b id="pt" style="font-size:1.3rem"></b></div><div class="bar tm"><b id="abar" style="width:100%"></b></div><div id="asec" style="font-weight:900;text-align:right;margin-bottom:6px">⏳ 2:00</div><p>Ketuk potongan teks untuk menaruhnya ke kotak urutan. Ketuk potongan di kotak untuk mengembalikannya.</p>
+      <div id="slots"></div>
+      <h3>Potongan Teks (acak)</h3><div id="pool"></div>
+      <div class="help"><button class="btn s" onclick="cek()">✅ Periksa</button><button class="btn s" onclick="bantu(1)">🃏 Kartu Ciri</button><button class="btn s" onclick="bantu(2)">🃏 Kartu Petunjuk</button><button class="btn s" onclick="bantu(3)">🃏 Kartu Awal Kata</button></div>
+      <div id="pf"></div>
+      <button class="btn m" style="margin-top:14px" onclick="kumpul()">📨 Kumpulkan ke Guru</button>
+    </div>
+  </div>
+</section>
+
+<section class="scr hero" id="s7">
+  <div class="crown">🏆</div><h2 style="font-size:2rem;color:var(--gold)">Titah Diterima!</h2>
+  <p id="done"></p><button class="btn o" onclick="go(9)">🏆 Lihat Papan Peringkat</button> <button class="btn" onclick="go(0)">Gerbang Istana</button>
+</section>
+
+<section class="scr" id="s9">
+  <h2>🏆 Papan Peringkat Kelompok</h2><div class="guide"><svg class="ch"><use href="#raja"/></svg><div class="bub">Kelompok mana yang paling gemilang? Skormu muncul di sini setelah game dan asesmen dikumpulkan. Skor = game (maks. 50) + struktur (maks. 50). Ketuk sebuah kelompok untuk melihat skor anggotanya.</div></div>
+  <div id="pp"></div><button class="btn g" onclick="papan()">↻ Perbarui Peringkat</button>
+</section>
+
+<section class="scr" id="s8">
+  <h2>👨‍🏫 Ruang Guru</h2><div id="guru"></div>
+</section>
+</main>
+
+<div class="modal" id="modal"><div class="mb" id="mbx"><button class="btn s x" onclick="tutup()">✖ Tutup</button><div id="mc"></div></div></div>
+
+<div class="modal" id="fm" style="z-index:125"><div class="mb" style="max-width:640px;text-align:center"><h2 id="ft" style="color:var(--gold)"></h2><p id="fs"></p><div class="grid g3" id="fg"></div></div></div>
+<div class="modal" id="pkm" style="z-index:130"><div class="mb"><h2 style="color:var(--gold)">🔑 Paskey :</h2><input id="pkv" type="password" inputmode="numeric" autocomplete="off" placeholder="Masukkan Paskey guru"><p id="pke" style="font-weight:800;min-height:1.4em"></p><button class="btn g" id="pkok">Konfirmasi</button> <button class="btn s x" id="pkno">Batal</button></div></div>
+<script>
+const NAV=["🏰 Gerbang","📜 Tujuan","🚪 Materi","📚 Ringkas","🪪 Daftar","⚔️ Game","🗝️ Asesmen","🏆 Peringkat","👨‍🏫 Guru"];
+const NID=[0,1,2,3,4,5,6,9,8];
+const NM=["Abstrak","Orientasi","Komplikasi","Evaluasi","Resolusi","Koda"];
+const DEF=["Pembuka yang meringkas isi kisah","Pengenalan latar, waktu, dan tokoh","Munculnya masalah atau konflik","Tanggapan atau penilaian atas masalah","Penyelesaian masalah","Penutup, kesudahan, atau pesan"];
+const EX=[[
+"Istana Indra Kencana bertatahkan permata dan dikelilingi taman bunga yang harum.|I|Latar tempat",
+"Dengan hati lapang, baginda memaafkan hamba yang telah khilaf.|E|Nilai moral (pemaaf)",
+"Seluruh rakyat membawa hasil bumi untuk dibagikan kepada fakir miskin.|E|Nilai sosial",
+"Ketika fajar menyingsing, gamelan dipalu menyambut titah raja.|E|Nilai budaya",
+"Rakyat resah mendengar mahkota hendak direbut, tetapi baginda tetap tenang.|I|Alur (konflik memuncak)",
+"Kesombongan membinasakan, keadilan menyelamatkan; demikianlah pesan kisah ini.|I|Amanat"],[
+"Hujan turun deras di lembah itu, dan sungai meluap membasahi ladang.|I|Latar suasana",
+"Tuan Guru mengajarkan bahwa budi pekerti lebih mulia daripada harta.|E|Nilai pendidikan",
+"Si Kalam tidak pernah menyimpan dendam kepada orang yang menghinanya.|I|Penokohan",
+"Pada hari panen, warga dusun menggelar kenduri dan berdoa bersama.|E|Nilai religius dan budaya",
+"Berkumpullah seluruh warga menggali saluran air bersama-sama.|E|Nilai sosial (gotong royong)",
+"Penutur menyebut Si Kalam dengan kata “ia” sepanjang cerita.|I|Sudut pandang orang ketiga"],[
+"Taman istana dipenuhi bunga cempaka yang mekar di bawah sinar bulan.|I|Latar tempat dan suasana",
+"Puteri berkata santun, “Kekerasan tidak akan menyelesaikan persoalan.”|E|Nilai moral",
+"Para dayang menyulam kain songket untuk upacara kerajaan.|E|Nilai budaya",
+"Hamba berdiri di balik tirai dan mendengar sendiri titah sang puteri.|I|Sudut pandang orang pertama",
+"Kisah ini bertema keberanian dan ketulusan seorang puteri menjaga negeri.|I|Tema",
+"Tabib istana mengajari para dayang meracik ramuan penyembuh.|E|Nilai pendidikan"],[
+"Malam itu ombak bergemuruh dan layar kapal berkibar ditiup angin barat.|I|Latar suasana",
+"Hang Setia sabar menahan lapar di penjara tanpa mengeluh.|I|Penokohan",
+"Para saudagar negeri jauh disambut dengan hormat menurut adat bandar.|E|Nilai budaya",
+"Mendengar fitnah itu, ia bersujud memohon pertolongan Yang Maha Kuasa.|E|Nilai religius",
+"Setelah kebenaran terbukti, baginda memeluk sang laksamana dan memohon maaf.|I|Alur (resolusi)",
+"Rakyat bahu-membahu memperbaiki dermaga yang rusak diterjang badai.|E|Nilai sosial"],[
+"Di balik jendela menara, anak raja memandang langit yang kemerahan.|I|Latar tempat dan waktu",
+"Burung nuri itu cerdik dan setia, tetapi tidak suka dikurung.|I|Penokohan",
+"Anak raja belajar menulis aksara dari seorang pujangga istana.|E|Nilai pendidikan",
+"Kisah ini bertema penyesalan dan keteguhan menepati janji.|I|Tema",
+"Jangan kau ingkari janji, sebab kepercayaan sukar dipulihkan.|I|Amanat",
+"Rakyat menabuh gendang menyambut pulangnya sang nuri ke istana.|E|Nilai budaya"],[
+"Pasar negeri Perca riuh oleh suara pedagang dan harum rempah-rempah.|I|Latar suasana",
+"Saudagar itu berpegang pada nasihat orang tua agar tidak menipu pembeli.|E|Nilai moral",
+"Menjelang magrib, ia bergegas menunaikan sembahyang di surau.|E|Nilai religius",
+"Penutur menyebut saudagar itu “beliau” dari luar cerita.|I|Sudut pandang orang ketiga",
+"Tetangga bergantian menjenguk dan menyuapi saudagar yang jatuh sakit.|E|Nilai sosial",
+"Dibukanya kembali kedai kecil dengan modal pinjaman yang dilunasinya jujur.|I|Alur (resolusi)"]];
+// 6 kelompok x 16 kutipan (10 diundi tiap bermain): teks | I/E | alasan
+const G=[[
+"Syahdan, pada zaman dahulu berdirilah negeri Indra Kencana di tepi laut yang luas.|I|Latar tempat dan waktu",
+"Maka Raja Mahadewa dikenal arif lagi adil, tiada pernah memihak kepada yang bersalah.|I|Penokohan (watak tokoh)",
+"Barang siapa berlaku jujur, niscaya hidupnya dimuliakan dan namanya harum.|E|Nilai moral",
+"Setiap pagi rakyat berkumpul di balai rung seri untuk bermusyawarah bersama baginda.|E|Nilai budaya (adat musyawarah)",
+"Hatta, datanglah seorang menteri durhaka yang hendak merebut mahkota baginda.|I|Alur (munculnya konflik)",
+"Dengan mengucap bismillah, baginda menyerahkan segala perkara kepada Tuhan Yang Maha Esa.|E|Nilai religius",
+"Adapun hamba yang hina ini menuturkan kisah baginda sebagaimana yang hamba ketahui.|I|Sudut pandang orang pertama",
+"Kisah ini berkisah tentang kejujuran dan keadilan yang mengalahkan kelicikan.|I|Tema",
+"Anak-anak negeri itu dididik membaca kitab dan menimba ilmu sejak usia tujuh tahun.|E|Nilai pendidikan",
+"Hendaklah pembaca mengambil teladan agar tidak tamak akan kuasa.|I|Amanat"],[
+"Pada suatu masa, di dusun kaki Gunung Sakti, hiduplah anak yatim bernama Si Kalam.|I|Latar dan tokoh",
+"Si Kalam rajin lagi rendah hati, walau sering dihina oleh anak saudagar.|I|Penokohan",
+"Para penduduk bergotong royong membangun balai tanpa mengharap upah.|E|Nilai sosial",
+"Sebelum belajar, anak-anak mencium tangan guru sebagai tanda hormat.|E|Nilai budaya (adab)",
+"Tiba-tiba kemarau panjang melanda, sumur pun kering dan timbullah huru-hara.|I|Alur (komplikasi)",
+"Si Kalam bersujud syukur kepada Allah setelah hujan turun membasahi bumi.|E|Nilai religius",
+"Konon, Si Kalam menyusun akal membuat saluran air dari sungai di balik bukit.|I|Alur (penyelesaian)",
+"Kata guru, ilmu yang tinggi menuntun manusia pada budi yang luhur.|E|Nilai pendidikan",
+"Hikayat ini bertema perjuangan anak miskin meraih ilmu demi menolong sesama.|I|Tema",
+"Barang siapa menuntut ilmu dengan sabar, kelak ia mulia di mata sesama.|I|Amanat"],[
+"Alkisah, di dalam istana bertiang emas bersemayamlah Puteri Cempaka Biru yang molek parasnya.|I|Latar dan tokoh",
+"Sang puteri tulus hatinya, suka menolong dayang yang ditimpa sakit.|I|Penokohan",
+"Pada malam purnama, kerajaan menggelar pesta panen dengan tarian dan gamelan.|E|Nilai budaya",
+"Puteri tidak membeda-bedakan rakyat jelata dengan para bangsawan.|E|Nilai sosial",
+"Maka timbullah perselisihan tatkala Pangeran Seberang meminang puteri dengan paksa.|I|Alur (komplikasi)",
+"Setiap subuh puteri berdoa memohon petunjuk agar negeri dilindungi dari bencana.|E|Nilai religius",
+"Akhirnya perang pun urung dan kedua negeri hidup berdamai.|I|Alur (resolusi)",
+"Hamba yang menyaksikan segala peristiwa itu sendiri, lalu hamba tuturkan kembali.|I|Sudut pandang orang pertama",
+"Dayang diajarkan menenun dan menulis aksara agar kelak mandiri.|E|Nilai pendidikan",
+"Ketulusan dan keberanian membela kebenaran akan membawa damai.|I|Amanat"],[
+"Tersebutlah seorang laksamana bernama Hang Setia, gagah perkasa dan teguh memegang janji.|I|Tokoh dan penokohan",
+"Di bandar Malaka yang ramai itu, kapal dagang berlabuh setiap hari.|I|Latar",
+"Pantang bagi Hang Setia mengkhianati rajanya, walau nyawa menjadi taruhan.|E|Nilai moral (kesetiaan)",
+"Para pembesar duduk bersila menurut tingkat kedudukannya dalam sidang adat.|E|Nilai budaya",
+"Sesudah itu fitnah disebarkan pembesar yang iri hati, sehingga baginda murka.|I|Alur (konflik)",
+"Hang Setia menyerahkan nasibnya kepada Tuhan seraya bertawakal.|E|Nilai religius",
+"Nelayan dan saudagar saling bertukar hasil dengan adil dan rukun.|E|Nilai sosial",
+"Kisah ini bertema kesetiaan seorang hamba yang diuji oleh fitnah.|I|Tema",
+"Anak-anak diajari ilmu pelayaran dan ilmu bintang oleh pelaut tua.|E|Nilai pendidikan",
+"Janganlah mudah percaya pada kabar tanpa menyelidikinya terlebih dahulu.|I|Amanat"],[
+"Pada waktu senja, di taman larangan istana, anak raja menemukan burung nuri bersuara merdu.|I|Latar waktu dan tempat",
+"Anak raja itu pemurah dan penyayang, tetapi mudah lupa akan janjinya.|I|Penokohan",
+"Si nuri menasihati, “Berbuat baiklah, sebab kebaikan akan kembali kepadamu.”|E|Nilai moral",
+"Raja menyambut tetamu asing dengan jamuan sirih pinang menurut adat.|E|Nilai budaya",
+"Maka lepaslah burung itu dari sangkar karena kelalaian sang anak raja.|I|Alur (komplikasi)",
+"Dengan khusyuk mereka bersyukur kepada Tuhan atas selamatnya negeri dari wabah.|E|Nilai religius",
+"Rakyat saling menolong menjaga yang lemah ketika wabah melanda.|E|Nilai sosial",
+"Ia pun menyesal, lalu belajar menepati janji.|I|Alur (resolusi)",
+"Penutur bercerita sebagai pihak di luar cerita, menyebut tokoh dengan “ia” dan “baginda”.|I|Sudut pandang orang ketiga",
+"Orang bijak diutus mengajarkan hukum dan budi pekerti kepada rakyat.|E|Nilai pendidikan"],[
+"Adapun di negeri Perca hiduplah saudagar kaya bernama Tuan Sulaiman.|I|Tokoh dan latar",
+"Beliau murah tangan, namun kadang tinggi hati akan hartanya.|I|Penokohan",
+"Saudagar itu bersedekah kepada fakir miskin setiap hari Jumat.|E|Nilai religius",
+"Pada upacara pernikahan, mempelai disandingkan di pelaminan menurut adat bersanding.|E|Nilai budaya",
+"Setelah permata itu dicuri, saudagar jatuh miskin dan dihina orang.|I|Alur (komplikasi)",
+"Jiran tetangga datang membawa beras dan kain untuk meringankan bebannya.|E|Nilai sosial",
+"Tema hikayat ini ialah kesombongan harta yang berujung penyesalan.|I|Tema",
+"Anak saudagar dikirim menuntut ilmu dagang dan ilmu agama ke negeri seberang.|E|Nilai pendidikan",
+"Harta hanyalah titipan, janganlah sombong karenanya, wahai pembaca.|I|Amanat",
+"Tuan Sulaiman akhirnya berniaga dengan jujur, tiada lagi mengurangi timbangan.|E|Nilai moral"]
+].map((g,gi)=>g.concat(EX[gi]).map(s=>{const p=s.split("|");return{t:p[0],a:p[1],r:p[2]}}));
+// 6 kotak struktur (urutan benar)
+const ST=[
+["Inilah hikayat Raja Mahadewa, raja adil yang dicintai rakyat negeri Indra Kencana.","Alkisah, Indra Kencana negeri makmur, dan Raja Mahadewa memerintah dengan arif bijaksana.","Datanglah Menteri Sakti yang iri lalu merencanakan perampasan mahkota baginda.","Rakyat resah, namun baginda tetap tenang dan memohon petunjuk Tuhan.","Akhirnya kecurangan menteri terbongkar dan ia diusir dari negeri.","Maka kembalilah kemakmuran, dan kisah itu dikenang sepanjang zaman."],
+["Inilah hikayat Si Kalam, anak yatim yang mengangkat negeri dengan ilmunya.","Di dusun kaki Gunung Sakti, Si Kalam hidup miskin tetapi rajin belajar pada Tuan Guru.","Kemarau panjang tiba, sumur kering, dan penduduk bertengkar berebut air.","Si Kalam merenung, ilmu yang disimpannya patut dipakai untuk menolong semua orang.","Ia membuat saluran dari sungai bukit, dan air kembali mengalir ke dusun.","Sejak itu Si Kalam digelari Pandai Hulu, dan dusun itu hidup makmur."],
+["Inilah hikayat Puteri Cempaka Biru yang tulus hati dan berani.","Di istana bertiang emas, Puteri Cempaka Biru dicintai dayang dan rakyat jelata.","Pangeran Seberang datang meminang dengan paksa dan mengancam menyerang negeri.","Puteri gundah, tetapi ia berdoa dan bermusyawarah dengan para pembesar.","Puteri berunding dengan lemah lembut hingga sang pangeran insaf dan berdamai.","Kedua negeri bersahabat, dan nama sang puteri harum dikenang orang."],
+["Inilah hikayat Hang Setia, laksamana yang teguh memegang janji kepada rajanya.","Di bandar Malaka yang ramai, Hang Setia menjaga laut atas titah baginda.","Pembesar yang iri memfitnah Hang Setia sehingga raja murka dan menjatuhkan hukuman.","Dalam penjara, Hang Setia tetap sabar dan tidak menaruh dendam.","Kebenaran akhirnya terungkap, dan baginda memulihkan kedudukan sang laksamana.","Sejak itu raja berhati-hati menimbang kabar, dan Hang Setia dikenang sebagai teladan."],
+["Inilah hikayat anak raja dan burung nuri yang mengajarkan arti menepati janji.","Pada senja di taman larangan, anak raja menemukan nuri yang pandai bertutur.","Karena lalai, sangkar terbuka dan nuri terbang meninggalkan istana.","Anak raja menyesali kelalaiannya dan merasa janjinya tiada berharga.","Ia mencari nuri dengan sabar hingga burung itu kembali dengan sukarela.","Sejak itu anak raja tidak lagi ingkar janji."],
+["Inilah hikayat Tuan Sulaiman, saudagar yang belajar bahwa harta hanyalah titipan.","Di negeri Perca, Tuan Sulaiman kaya raya dan terkenal murah tangan.","Permata pusakanya dicuri, dan hartanya habis hingga ia jatuh miskin.","Dalam kemiskinan ia sadar bahwa kesombongan telah membutakan hatinya.","Dengan bantuan tetangga, ia berniaga jujur dan perlahan bangkit kembali.","Ia hidup sederhana dan menasihati anak cucunya agar rendah hati."]];
+const COL=["#c0392b","#d4a017","#1f9a86","#7b45b0","#2a6fb0","#d9528a"];
+const MAT=["Hikayat adalah karya sastra Melayu klasik tentang raja, bangsawan, dan pahlawan, yang awalnya dituturkan secara lisan.",
+"Struktur hikayat berurutan: abstrak, orientasi, komplikasi, evaluasi, resolusi, dan koda.",
+"Unsur intrinsik berada di dalam teks: tema, tokoh dan penokohan, alur, latar, sudut pandang, dan amanat.",
+"Unsur ekstrinsik berada di luar teks: nilai pendidikan, moral, sosial, religius, dan budaya.",
+"Unsur-unsur itu saling berhubungan: watak tokoh dan alur menghadirkan nilai, lalu nilai melahirkan amanat."];
+const $=id=>document.getElementById(id);
+const S={nama:"",kelas:"",kel:0,gi:0,skor:0,ans:[],q:[],ord:[],pool:[],hint:0,tries:0,t0:0,benar:0,sel:null};
+let cur=0;
+
+// bintang & nav
+for(let i=0;i<30;i++){const s=document.createElement("i");s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:${Math.random()*3}s`;$("stars").appendChild(s)}
+$("nav").innerHTML=NAV.map((n,i)=>`<button onclick="go(${NID[i]})" id="n${NID[i]}">${n}</button>`).join("");
+function go(i){
+  if(i>=4&&i<=6&&!S.nama&&i>4){i=4}
+  document.querySelectorAll(".scr").forEach(s=>s.classList.remove("on"));$("s"+i).classList.add("on");
+  document.querySelectorAll("nav button").forEach(b=>b.classList.remove("on"));const b=$("n"+i);if(b)b.classList.add("on");
+  window.scrollTo({top:0,behavior:"smooth"});speechSynthesis.cancel();if(i!=5)clearInterval(gt);if(i==5&&S.q.length&&S.gi<10&&!S.lock)mulaiGT();if(i==8)guru();if(i==9)papan();if(i==6)chests();
+}
+go(0);
+function tutup(){$("modal").classList.remove("on");speechSynthesis.cancel();clearInterval(S.tm)}
+function say(t,cb){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="id-ID";u.rate=.92;u.onend=cb;speechSynthesis.speak(u)}catch(e){setTimeout(cb,2500)}}
+
+// ===== MATERI MODE =====
+function mode0(m){
+  const c=$("mc");$("mbx").className="mb m"+m;$("modal").classList.add("on");
+  if(m=="a"){
+    c.innerHTML=`<h2>🎧 Ruang Auditori</h2><p>Tekan putar, lalu simak narasi materi dengan saksama.</p><div id="ls">${MAT.map((t,i)=>`<div class="line" id="l${i}">${t}</div>`).join("")}</div><button class="btn s" onclick="playA(0)">▶ Putar Narasi</button> <button class="btn s m" onclick="speechSynthesis.cancel()">⏹ Henti</button>`;
+  }else if(m=="v"){
+    const ks=[["🧩","Struktur","Abstrak → Orientasi → Komplikasi → Evaluasi → Resolusi → Koda","#c33a5b"],["🛡️","Intrinsik","Tema • Tokoh • Alur • Latar • Sudut pandang • Amanat","#b07a0a"],["🌍","Ekstrinsik","Pendidikan • Moral • Sosial • Religius • Budaya","#127a68"],["🔗","Hubungan","Tokoh jujur → nilai moral; adat istana → nilai budaya","#7b45b0"]];
+    c.innerHTML=`<h2>🖼️ Ruang Visual</h2><div class="grid g2">${ks.map(k=>`<div class="card" style="background:${k[3]}"><div style="font-size:2.6rem">${k[0]}</div><h3>${k[1]}</h3><p>${k[2]}</p></div>`).join("")}</div>`;
+  }else if(m=="av"){
+    S.si=0;const em=["📜","🧩","🛡️","🌍","🔗"];
+    c.innerHTML=`<h2>🎬 Teater Istana</h2><div class="stage"><div class="big" id="em"></div><div class="cap" id="cp"></div></div><p><button class="btn s" onclick="av(-1)">◀</button> <button class="btn s" onclick="av(0)">▶ Putar</button> <button class="btn s" onclick="av(1)">▶|</button></p>`;
+    S.em=em;av(2);
+  }else{
+    const ch=["Tema","Tokoh","Alur","Latar","Sudut pandang","Amanat","Nilai pendidikan","Nilai moral","Nilai sosial","Nilai religius","Nilai budaya"].sort(()=>Math.random()-.5);
+    S.kc=0;c.innerHTML=`<h2>🤹 Ruang Kinestetik</h2><p>Ketuk sebuah kartu, lalu ketuk keranjang yang tepat!</p><div id="ch">${ch.map(x=>`<span class="chip" onclick="pil(this)">${x}</span>`).join("")}</div><div class="grid g2"><div class="bucket" onclick="taruh(this,'I')" id="bI"><b>🛡️ INTRINSIK</b><br></div><div class="bucket" onclick="taruh(this,'E')" id="bE"><b>🌍 EKSTRINSIK</b><br></div></div><p id="kf"></p>`;
+  }
+}
+function playA(i){if(i>=MAT.length){document.querySelectorAll(".line").forEach(l=>l.classList.remove("on"));return}
+  document.querySelectorAll(".line").forEach(l=>l.classList.remove("on"));$("l"+i).classList.add("on");say(MAT[i],()=>playA(i+1))}
+function av(d){
+  if(d==2){S.si=0}else if(d==-1){S.si=Math.max(0,S.si-1)}else if(d==1){S.si=Math.min(4,S.si+1)}
+  $("em").textContent=S.em[S.si];$("cp").textContent=MAT[S.si];
+  if(d==0){say(MAT[S.si],()=>{if(S.si<4){S.si++;av(0)}})}else if(d!=2)say(MAT[S.si])}
+function pil(e){document.querySelectorAll(".chip").forEach(x=>x.classList.remove("sel"));e.classList.add("sel");S.sel=e}
+const KI=["Tema","Tokoh","Alur","Latar","Sudut pandang","Amanat"];
+function taruh(b,k){const e=S.sel;if(!e)return;const ok=(KI.includes(e.textContent)?"I":"E")==k;
+  if(ok){b.appendChild(e);e.classList.remove("sel");S.sel=null;$("kf").textContent="✔ Tepat!"}else{$("kf").textContent="✖ Belum tepat, coba keranjang lainnya.";e.style.animation="shake .4s"; setTimeout(()=>e.style.animation="",400)}
+  if(!$("ch").children.length)$("kf").textContent="🎉 Hebat! Semua kartu terpilah dengan benar.";}
+
+// ===== GAME =====
+function startGame(){
+  S.nama=$("nama").value.trim();S.kelas=$("kelas").value.trim();S.kel=+$("kel").value;
+  if(!S.nama||!S.kelas||!S.kel){alert("Lengkapi NAMA LENGKAP, KELAS, dan KELOMPOK dahulu.");return}
+  S.q=[...G[S.kel-1]].sort(()=>Math.random()-.5).slice(0,10);S.gi=0;S.skor=0;S.ans=[];S.rAkhir=null;S.habis=false;S.sending=false;tanyaRasa("awal").then(v=>{S.rAwal=v;go(5);tampil()});
+}
+function tampil(){
+  const q=S.q[S.gi];$("mu").setAttribute("href","#"+MC[S.kel-1]);$("bub").textContent="Ayo tentukan!";$("gk").textContent=`Kelompok ${S.kel} • Kutipan ${S.gi+1}/10`;$("gs").textContent=`⭐ ${S.skor}`;
+  $("gb").style.width=(S.gi/10*100)+"%";$("gq").innerHTML=`<b>“${q.t}”</b>`;$("gf").innerHTML="";S.lock=false;mulaiGT();
+}
+function jawab(a){
+  if(S.lock)return;S.lock=true;clearInterval(gt);const dtk=Math.min(30,Math.round((Date.now()-S.gt0)/1000));const q=S.q[S.gi],ok=a==q.a;if(ok)S.skor++;react(ok);
+  S.ans.push({t:q.t,jawab:a||"-",kunci:q.a,benar:ok,detik:dtk,habis:a===null});$("gs").textContent=`⭐ ${S.skor}`;
+  $("gf").innerHTML=`<div class="fb ${ok?"ok":"no"}">${ok?"🎉 Benar!":a===null?"⏰ Waktu habis!":"😅 Kurang tepat."} Kunci: <b>${q.a=="I"?"INTRINSIK":"EKSTRINSIK"}</b> — ${q.r}.</div><button class="btn s" style="margin-top:10px" onclick="lanjut()">${S.gi<9?"Kutipan berikutnya ➜":"Selesai ➜"}</button>`;
+}
+function lanjut(){S.gi++;if(S.gi<10)tampil();else{sfx("win");confetti(80);$("gb").style.width="100%";$("gf").innerHTML="";
+  $("gq").innerHTML=`<h3>🏅 Skor akhirmu: ${S.skor}/10</h3><p>Lanjutkan ke asesmen untuk membuka kotak harta kelompokmu.</p>`;$("gk").textContent="Game selesai";
+  $("gf").innerHTML=`<button class="btn" style="margin-top:12px" onclick="go(6)">Menuju Asesmen ➜</button>`}}
+
+// ===== ASESMEN =====
+function buka(i){
+  $("chests").classList.add("hide");$("puz").classList.remove("hide");$("pt").textContent=`Kotak Kelompok ${i+1}`;$("pch").innerHTML=chestSVG(COL[i],i+1,false,true);$("pt").style.color=COL[i];
+  S.pool=ST[i].map((t,k)=>({t,k})).sort(()=>Math.random()-.5);S.ord=Array(6).fill(null);S.hint=0;S.tries=0;S.t0=Date.now();S.bad=[];S.hl=-1;draw();$("pf").innerHTML="";S.sending=false;startAT();
+}
+function draw(){
+  $("slots").innerHTML=NM.map((n,i)=>{const p=S.ord[i];const st=S.bad.includes(i)?"bad":(S.chk&&p&&p.k==i?"good":"");
+    return `<div class="slot ${st} ${S.hl==i?"hl":""}" onclick="lepas(${i})"><span class="n">${i+1}. ${n}</span><span>${p?p.t:"<i style='opacity:.5'>kosong…</i>"}</span></div>`}).join("");
+  const used=S.ord.filter(Boolean).map(p=>p.k);
+  $("pool").innerHTML=S.pool.filter(p=>!used.includes(p.k)).map(p=>`<div class="piece" onclick="taruhP(${p.k})">${p.t}</div>`).join("")||"<i>Semua potongan sudah ditempatkan.</i>";
+}
+function taruhP(k){if(S.habis)return;const i=S.ord.indexOf(null);if(i<0)return;S.ord[i]=S.pool.find(p=>p.k==k);S.bad=[];S.chk=false;S.hl=-1;draw()}
+function lepas(i){if(S.habis)return;S.ord[i]=null;S.bad=[];S.chk=false;S.hl=-1;draw()}
+function cek(){if(S.habis)return;
+  if(S.ord.includes(null)){$("pf").innerHTML=`<div class="fb no">Isi semua kotak urutan dahulu.</div>`;return}
+  S.tries++;S.chk=true;S.bad=S.ord.map((p,i)=>p.k==i?-1:i).filter(x=>x>=0);S.benar=6-S.bad.length;draw();
+  sfx(S.bad.length?"no":"win");if(!S.bad.length)confetti(70);$("pf").innerHTML=S.bad.length?`<div class="fb no">Baru ${S.benar}/6 tepat. Gunakan 🃏 Kartu Bantuan bila perlu.</div>`:`<div class="fb ok">🎉 Sempurna! Struktur hikayat tersusun benar. Silakan kumpulkan.</div>`;
+}
+function bantu(n){if(S.habis)return;
+  S.hint++;const w=S.bad.length?S.bad[0]:S.ord.findIndex((p,i)=>!p||p.k!=i);
+  if(n==1)$("pf").innerHTML=`<div class="fb" style="background:#7a3fb0"><b>Kartu Ciri:</b><br>${NM.map((x,i)=>`${i+1}. ${x}: ${DEF[i]}`).join("<br>")}</div>`;
+  else if(w<0)$("pf").innerHTML=`<div class="fb ok">Susunanmu sudah benar!</div>`;
+  else if(n==2){S.hl=w;draw();$("pf").innerHTML=`<div class="fb" style="background:#7a3fb0"><b>Kartu Petunjuk:</b> kotak ${w+1} (${NM[w]}) masih keliru. Ingat: ${NM[w]} = ${DEF[w].toLowerCase()}.</div>`}
+  else $("pf").innerHTML=`<div class="fb" style="background:#7a3fb0"><b>Kartu Awal Kata:</b> untuk ${NM[w]}, cari potongan berawal “${ST[S.kel-1][w].split(" ").slice(0,3).join(" ")} …”</div>`;
+}
+// ===== SIMPAN =====
+let DB=null,USER=null;
+(async()=>{try{if(window.claude){DB=await claude.use("db");USER=await claude.use("user")}}catch(e){}loadMateri();})();
+async function kumpul(auto){
+  if(S.sending)return;
+  if(S.ans.length<10){toast("Selesaikan game (10 kutipan) terlebih dahulu ya!");return}
+  if(!auto&&S.ord.includes(null)){toast("Isi semua kotak struktur dahulu sebelum mengumpulkan.");return}
+  S.sending=true;clearInterval(at);if(auto)S.habis=true;
+  if(!S.rAkhir)S.rAkhir=await tanyaRasa("akhir");
+  const dat={perasaanAwal:S.rAwal||"",perasaanAkhir:S.rAkhir||"",habisAsesmen:!!S.habis,habisGame:S.ans.filter(a=>a.habis).length,waktuGame:S.ans.reduce((t,a)=>t+(a.detik||0),0),nama:S.nama,kelas:S.kelas,kelompok:S.kel,skorGame:S.skor,jawabanGame:S.ans,susunan:S.ord.map(p=>p?p.k+1:0),benarStruktur:S.ord.filter((p,i)=>p&&p.k==i).length,percobaan:S.tries,bantuan:S.hint,detik:Math.round((Date.now()-S.t0)/1000),ts:Date.now()};
+  try{localStorage.setItem("me",JSON.stringify({nama:S.nama,kelas:S.kelas,kelompok:S.kel}))}catch(e){}
+  const id=dat.ts+"-"+Math.random().toString(36).slice(2,6);let ok=false;
+  try{if(DB){await DB.collection("submissions").doc(id).set(dat);ok=true}else if(await gasKirim(dat))ok=true}catch(e){}
+  try{const a=JSON.parse(localStorage.getItem("sub")||"[]");a.push(dat);localStorage.setItem("sub",JSON.stringify(a))}catch(e){}
+  window.sentOk=ok;$("done").innerHTML=`Terima kasih, <b>${S.nama}</b>! Skor game ${S.skor}/10 • struktur benar ${dat.benarStruktur}/6.<br>${ok?"Hasilmu sudah terkirim ke Bapak/Ibu Guru. ✔":"Hasil tersimpan di perangkat ini (belum terkirim ke server)."}`;sfx("win");confetti(90);window.pcf=1;S.sending=false;go(9);showApre(dat);
+}
+// ===== GURU =====
+async function guru(){
+  const g=$("guru");const own=USER?USER.isOwner():false;
+  if(!DB&&!window.pinOK){pinUI();return}
+  if(DB&&!own){g.innerHTML=`<div class="card">🔒 Halaman ini khusus guru pemilik halaman. Buka artefak melalui akun pemilik untuk meninjau pengumpulan siswa. Anda tetap dapat mencoba seluruh fitur sebagai murid.</div>`;return}
+  g.innerHTML=`<div class="card">Memuat…</div>`;
+  try{let rows;if(DB){const s=await DB.collection("submissions").orderBy("ts","desc").get();rows=s.docs.map(d=>({...d.data(),_id:d.id}))}else{const g=await gasList();rows=(g||JSON.parse(localStorage.getItem("sub")||"[]")).sort((a,b)=>b.ts-a.ts)}window.ROWS=rows;
+    g.innerHTML=`${DB?"":gasPanel()}<div class="card"><p>Total pengumpulan: <b>${rows.length}</b> <button class="btn s" onclick="csv()">⬇ Unduh CSV</button> <button class="btn s b" onclick="xls()">⬇ Unduh Excel</button> <button class="btn s m" onclick="guru()">↻ Muat ulang</button> <button class="btn s x" onclick="hapusSemua(this)">🗑️ Hapus Semua Hasil</button></p><div style="overflow-x:auto"><table><tr><th>Nama</th><th>Kelas</th><th>Kel</th><th>Game</th><th>Struktur</th><th>Bantuan</th><th>Perasaan</th><th>Waktu</th></tr>${rows.map((r,i)=>`<tr class="r" onclick="detail(${i})"><td>${r.nama}</td><td>${r.kelas}</td><td>${r.kelompok}</td><td>${r.skorGame}/10</td><td>${r.benarStruktur}/6</td><td>${r.bantuan}</td><td>${rasaLbl(r.perasaanAwal)} ➜ ${rasaLbl(r.perasaanAkhir)}</td><td>${new Date(r.ts).toLocaleString("id-ID")}</td></tr>`).join("")}</table></div></div><div id="dt"></div>`;
+  }catch(e){g.innerHTML=`<div class="card">Gagal memuat data.</div>`}
+}
+function detail(i){const r=ROWS[i];$("dt").innerHTML=`<div class="card"><h3>${esc(r.nama)} — Kel ${r.kelompok}</h3><button class="btn s x" data-a="0" onclick="hapusSatu(${i},this)">🗑️ Hapus hasil murid ini</button><p>Susunan siswa (nomor potongan per kotak): <b>${r.susunan.join(" → ")}</b> (benar: 1→2→3→4→5→6). Percobaan: ${r.percobaan}, durasi asesmen ${r.detik} dtk${r.habisAsesmen?" (⏰ waktu habis)":""}. Soal game kehabisan waktu: ${r.habisGame||0}. Perasaan: ${rasaLbl(r.perasaanAwal)} ➜ ${rasaLbl(r.perasaanAkhir)}.</p>${r.jawabanGame.map(a=>`<div class="line" style="border-left-color:${a.benar?"#43d17b":"#ff6b6b"}">${a.benar?"✔":"✖"} ${a.t}<br><small>Jawab: ${a.jawab=="I"?"Intrinsik":a.jawab=="E"?"Ekstrinsik":"⏰ Waktu habis"}${a.detik!=null?" ("+a.detik+" dtk)":""} • Kunci: ${a.kunci=="I"?"Intrinsik":"Ekstrinsik"}</small></div>`).join("")}</div>`;$("dt").scrollIntoView({behavior:"smooth"})}
+async function csv(){
+  const h="Nama,Kelas,Kelompok,SkorGame,StrukturBenar,SkorTotal,PerasaanAwal,PerasaanAkhir,Bantuan,Percobaan,Detik,Waktu\n";
+  const t=h+ROWS.map(r=>[r.nama,r.kelas,r.kelompok,r.skorGame,r.benarStruktur,pt(r),r.perasaanAwal||"",r.perasaanAkhir||"",r.bantuan,r.percobaan,r.detik,new Date(r.ts).toISOString()].map(x=>`"${x}"`).join(",")).join("\n");
+  try{const d=window.claude?await claude.use("downloads"):null;if(d){await d.save({filename:"asesmen-hikayat.csv",data:t});return}}catch(e){}const a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["\ufeff"+t],{type:"text/csv"}));a.download="asesmen-hikayat.csv";a.click()
+}
+
+// ===== SUARA, EFEK, ANIMASI =====
+const MC=["raja","ksatria","puteri","ksatria","nuri","raja"];
+let AC=null,master=null,mus=null,musicOn=true,musicStarted=false,mt=null,bar=0;
+function ac(){if(!AC){try{AC=new (window.AudioContext||window.webkitAudioContext)();master=AC.createGain();master.gain.value=vol==0?0:.6;master.connect(AC.destination);mus=AC.createGain();mus.gain.value=vol*.18;mus.connect(master)}catch(e){}}
+  if(AC&&AC.state=="suspended")AC.resume();return AC}
+function tone(f,t0,d,type,v,dest){const a=ac();if(!a)return;const o=a.createOscillator(),g=a.createGain();o.type=type||"sine";o.frequency.value=f;g.gain.setValueAtTime(0,t0);g.gain.linearRampToValueAtTime(v||.15,t0+.01);g.gain.exponentialRampToValueAtTime(.0001,t0+d);o.connect(g);g.connect(dest||master);o.start(t0);o.stop(t0+d+.05)}
+function sfx(k){const a=ac();if(!a)return;const t=a.currentTime;
+  if(k=="click"){tone(660,t,.08,"square",.06);tone(990,t+.04,.08,"triangle",.07)}
+  else if(k=="ok")[523,659,784,1047].forEach((f,i)=>tone(f,t+i*.08,.25,"triangle",.18));
+  else if(k=="no"){tone(220,t,.25,"sawtooth",.1);tone(165,t+.15,.35,"sawtooth",.1)}
+  else if(k=="win")[523,659,784,659,784,1047,1319].forEach((f,i)=>tone(f,t+i*.12,.35,"triangle",.2));
+  else if(k=="pop"){tone(400,t,.1,"sine",.15);tone(800,t+.06,.12,"sine",.15)}}
+const MEL=[[0,2,3,2,4,3,2,1],[3,4,5,4,3,2,1,2],[0,1,2,3,2,1,0,2],[2,3,4,5,4,3,2,0]],SC=[293.66,329.63,349.23,440,493.88,587.33];
+function musik(on){musicOn=on;saveMus();$("snd").textContent=on?"🎵":"🔇";clearInterval(mt);if(on){ac();barPlay();mt=setInterval(barPlay,4000)}}
+document.addEventListener("pointerdown",e=>{if(!musicStarted&&!e.target.closest("#snd")){musicStarted=true;if(musicOn)musik(true)}});
+document.addEventListener("click",e=>{if(e.target.closest("button,.sq,.chip,.piece,.slot,.chest,.line,tr.r"))sfx("click")});
+function toast(m){const t=$("toast");t.textContent=m;t.classList.add("on");sfx("pop");clearTimeout(t.h);t.h=setTimeout(()=>t.classList.remove("on"),2800)}
+window.alert=toast;
+function confetti(n){const cs=["#f2c14e","#ff6b81","#43d17b","#5ac8fa","#b784e0","#ff9f43"];for(let i=0;i<(n||60);i++){const e=document.createElement("i");e.className="cf";e.style.cssText=`left:${Math.random()*100}vw;background:${cs[i%6]};border-radius:${i%3?"2px":"50%"};animation-duration:${1.6+Math.random()*1.8}s;animation-delay:${Math.random()*.5}s`;document.body.appendChild(e);setTimeout(()=>e.remove(),4200)}}
+function react(ok){const m=$("mas");m.classList.remove("happy","sad");void m.getBoundingClientRect();m.classList.add(ok?"happy":"sad");
+  $("bub").textContent=ok?["Daulat tuanku, tepat!","Cemerlang sekali!","Bijaksana jawabanmu!"][Math.random()*3|0]:["Hamba kurang yakin…","Jangan menyerah, ksatria!","Pelajari buktinya lagi."][Math.random()*3|0];
+  sfx(ok?"ok":"no");if(ok&&S.skor%3==0)confetti(35)}
+for(let i=0;i<5;i++){const c=document.createElement("div");c.className="cloud";c.style.cssText=`top:${8+i*16}%;width:${140+i*40}px;animation-duration:${60+i*18}s;animation-delay:-${i*14}s`;document.body.appendChild(c)}
+document.addEventListener("pointermove",e=>{if(e.pointerType=="touch")return;const t=e.target.closest(".sq,.chest:not(.lock)");if(!t)return;const r=t.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;t.style.transform=`perspective(700px) rotateY(${x*16}deg) rotateX(${-y*16}deg) translateY(-8px) scale(1.04)`});
+document.addEventListener("pointerout",e=>{const t=e.target.closest(".sq,.chest");if(t&&!t.contains(e.relatedTarget))t.style.transform=""});
+
+// ===== KOTAK HARTA KARUN =====
+function chestSVG(c,n,lock,open){const G="url(#gG)",O="url(#gOv)",S='stroke="#2a0810" stroke-width="3" stroke-linejoin="round"';
+return `<svg viewBox="0 0 140 130" class="cht${open?" open":""}" style="color:${c}"><ellipse cx="70" cy="123" rx="54" ry="7" fill="#0007"/><g class="glw"><circle cx="70" cy="62" r="48" fill="#ffe08a" opacity="0"/></g><g class="coins"><circle cx="48" cy="56" r="9" fill="${G}" ${S}/><circle cx="90" cy="56" r="9" fill="${G}" ${S}/><circle cx="68" cy="48" r="10" fill="${G}" ${S}/><circle cx="58" cy="60" r="8" fill="${G}" ${S}/><circle cx="80" cy="62" r="8" fill="${G}" ${S}/><text x="64" y="53" font-size="12" font-weight="900" fill="#8a6414">$</text></g><g class="bd"><rect x="14" y="62" width="112" height="58" rx="7" fill="currentColor" ${S}/><rect x="14" y="62" width="112" height="58" rx="7" fill="${O}"/><path d="M14 80H126M14 98H126" stroke="#0004" stroke-width="2"/><rect x="30" y="62" width="12" height="58" fill="${G}" ${S}/><rect x="98" y="62" width="12" height="58" fill="${G}" ${S}/><rect x="12" y="110" width="116" height="10" rx="4" fill="${G}" ${S}/></g><g class="ld"><path d="M14 64Q14 20 70 20Q126 20 126 64Z" fill="currentColor" ${S}/><path d="M14 64Q14 20 70 20Q126 20 126 64Z" fill="${O}"/><path d="M30 64Q30 28 44 23V64Z" fill="${G}" ${S}/><path d="M110 64Q110 28 96 23V64Z" fill="${G}" ${S}/><ellipse cx="54" cy="34" rx="16" ry="6" fill="#fff" opacity=".35" transform="rotate(-18 54 34)"/><rect x="10" y="60" width="120" height="9" rx="3" fill="${G}" ${S}/></g><g class="lk"><rect x="58" y="58" width="24" height="26" rx="5" fill="${G}" ${S}/><circle cx="70" cy="68" r="4" fill="#2a0810"/><rect x="68.5" y="68" width="3" height="9" fill="#2a0810"/></g><g class="sp"><text x="6" y="34" font-size="16">✦</text><text x="116" y="26" font-size="14">✧</text><text x="66" y="10" font-size="18">✦</text></g>${lock?'<g><path d="M14 92L126 112M126 92L14 112" stroke="#9aa3ad" stroke-width="6" stroke-dasharray="9 5" stroke-linecap="round"/><rect x="54" y="82" width="32" height="24" rx="5" fill="#9aa3ad" stroke="#2a0810" stroke-width="3"/><path d="M61 82V74a9 9 0 0 1 18 0V82" fill="none" stroke="#2a0810" stroke-width="5"/></g>':""}<circle cx="22" cy="24" r="13" fill="#2a0810" stroke="#f2c14e" stroke-width="3"/><text x="22" y="30" text-anchor="middle" font-size="16" font-weight="900" fill="#f2c14e">${n}</text></svg>`}
+function chests(){$("puz").classList.add("hide");$("chests").classList.remove("hide");
+  $("chests").innerHTML=ST.map((_,i)=>{const mine=S.kel==i+1;return `<div class="chest ${mine?"":"lock"}" style="--c:${COL[i]}" onclick="${mine?`abre(this,${i})`:"alert('Kotak ini milik kelompok lain. Pilih kotak sesuai kelompokmu!')"}">${chestSVG(COL[i],i+1,!mine)}<div class="cl">Kotak Harta Kelompok ${i+1}</div><small>${mine?"✨ Ketuk untuk membuka":"🔒 Terkunci"}</small></div>`}).join("")}
+function abre(el,i){if(el.classList.contains("open"))return;el.classList.add("open");const a=ac();if(a){const t=a.currentTime;tone(150,t,.4,"sawtooth",.08);[880,1100,1320,1760].forEach((f,k)=>tone(f,t+.4+k*.07,.3,"triangle",.14))}confetti(30);setTimeout(()=>buka(i),1200)}
+// ===== EFEK ARTISTIK =====
+let lastSp=0;
+document.addEventListener("pointermove",e=>{if(e.pointerType=="touch")return;const n=Date.now();if(n-lastSp<70)return;lastSp=n;const s=document.createElement("i");s.className="spk";s.textContent=["✦","✧","✨"][Math.random()*3|0];s.style.cssText=`left:${e.clientX}px;top:${e.clientY}px;color:${["#f2c14e","#ff9ab0","#fff3b0","#9ee7ff"][Math.random()*4|0]}`;document.body.appendChild(s);setTimeout(()=>s.remove(),900)});
+document.addEventListener("pointermove",e=>{const h=$("s0");if(!h||!h.classList.contains("on"))return;const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;h.querySelectorAll("[data-d]").forEach(l=>{const d=+l.dataset.d;l.style.setProperty("--px",x*d+"px");l.style.setProperty("--py",y*d+"px")})});
+for(let i=0;i<16;i++){const f=document.createElement("i");f.className="ff";f.style.cssText=`left:${Math.random()*100}vw;top:${40+Math.random()*60}vh;animation-duration:${8+Math.random()*10}s;animation-delay:-${Math.random()*10}s`;document.body.appendChild(f)}
+for(let i=0;i<12;i++){const f=document.createElement("i");f.className="pet";f.style.cssText=`left:${Math.random()*100}vw;animation-duration:${14+Math.random()*14}s;animation-delay:-${Math.random()*20}s;transform:scale(${.7+Math.random()*.8})`;document.body.appendChild(f)}
+
+// ===== KELOLA MATERI TAMBAHAN (dilindungi Paskey) =====
+const PK_H=7252730999268845;
+const cy=(str,seed=0)=>{let h1=0xdeadbeef^seed,h2=0x41c6ce57^seed;for(let i=0,ch;i<str.length;i++){ch=str.charCodeAt(i);h1=Math.imul(h1^ch,2654435761);h2=Math.imul(h2^ch,1597334677)}h1=Math.imul(h1^(h1>>>16),2246822507)^Math.imul(h2^(h2>>>13),3266489909);h2=Math.imul(h2^(h2>>>16),2246822507)^Math.imul(h1^(h1>>>13),3266489909);return 4294967296*(2097151&h2)+(h1>>>0)};
+const GN={a:"🎧 Auditori",v:"🖼️ Visual",av:"🎬 Audiovisual",k:"🤹 Kinestetik"},GC={a:"#e0793a",v:"#c33a5b",av:"#8e49b8",k:"#27ad98"},JN={teks:"📝 Teks",gambar:"🖼️ Gambar",youtube:"▶ YouTube",audio:"🎵 Audio",tautan:"🔗 Tautan"};
+let MT=[],pkFail=0,pkLock=0;
+const ytId=u=>{const m=String(u).match(/(?:youtu\.be\/|v=|embed\/|shorts\/|live\/)([A-Za-z0-9_-]{11})/);return m?m[1]:null};
+const isUrl=u=>/^https?:\/\//i.test(u);
+function updInfo(){const e=$("mtinfo");if(e)e.textContent=MT.length?`📌 ${MT.length} materi tambahan tersedia untuk murid`:"Belum ada materi tambahan"}
+async function loadMateri(){let r=[];try{if(DB){const s=await DB.collection("materi").orderBy("ts","asc").get();r=s.docs.map(d=>({...d.data(),_id:d.id}))}else r=JSON.parse(localStorage.getItem("materi")||"[]")}catch(e){try{r=JSON.parse(localStorage.getItem("materi")||"[]")}catch(_){}}MT=r;updInfo()}
+function askPk(){return new Promise(res=>{const m=$("pkm"),v=$("pkv");v.value="";$("pke").textContent="";m.classList.add("on");setTimeout(()=>v.focus(),80);
+  const done=r=>{m.classList.remove("on");$("pkok").onclick=$("pkno").onclick=v.onkeydown=null;res(r)};
+  const cek=()=>{if(Date.now()<pkLock){$("pke").textContent="Terlalu banyak percobaan. Tunggu sebentar.";return}
+    if(cy(v.value.trim())===PK_H){pkFail=0;sfx("ok");done(true)}else{pkFail++;sfx("no");$("pke").textContent="❌ Paskey salah.";v.value="";if(pkFail>=3){pkLock=Date.now()+15000;pkFail=0}}};
+  $("pkok").onclick=cek;$("pkno").onclick=()=>done(false);v.onkeydown=e=>{if(e.key=="Enter")cek()}})}
+function itemHTML(x,del){const c=GC[x.gaya]||"#f2c14e",ok=isUrl(x.isi||"");let b="";
+  if(x.jenis=="teks"){b=`<p>${esc(x.isi).replace(/\n/g,"<br>")}</p>${x.gaya=="a"?`<button class="btn s o" onclick="sayM('${x._id}')">🔊 Dengarkan</button>`:""}`}
+  else if(x.jenis=="gambar"){b=/^data:image\//.test(x.isi||"")?`<img class="mimg" src="${esc(x.isi)}" alt="${esc(x.judul)}" onclick="this.classList.toggle('z')">${x.ket?`<p>${esc(x.ket)}</p>`:""}`:"<p><i>Gambar tidak valid.</i></p>"}
+  else if(!ok){b=`<p>${esc(x.isi)}</p>`}
+  else if(x.jenis=="youtube"){const id=ytId(x.isi);b=id?`<iframe class="yt" src="https://www.youtube.com/embed/${id}" allowfullscreen loading="lazy" title="${esc(x.judul)}"></iframe>`:"";b+=`<p><a class="btn s b" href="${esc(x.isi)}" target="_blank" rel="noopener noreferrer">▶ Buka di YouTube</a></p>`}
+  else if(x.jenis=="audio"){b=`<audio controls preload="none" src="${esc(x.isi)}" style="width:100%"></audio><p><a class="btn s b" href="${esc(x.isi)}" target="_blank" rel="noopener noreferrer">🎧 Buka audio</a></p>`}
+  else b=`<p><a class="btn s p" href="${esc(x.isi)}" target="_blank" rel="noopener noreferrer">🔗 Buka tautan</a></p>`;
+  return `<div class="card" style="border-color:${c}"><span class="badge" style="background:${c}">${GN[x.gaya]||""}</span> <span class="tag">${JN[x.jenis]||""}</span><h3 style="font-family:Nunito;font-size:1.15rem">${esc(x.judul)}</h3>${b}${del?`<button class="btn s x" onclick="hapusMateri('${x._id}')">🗑️ Hapus (Paskey)</button>`:""}</div>`}
+function kompres(file){return new Promise((res,rej)=>{const r=new FileReader();r.onerror=rej;r.onload=()=>{const im=new Image();im.onerror=rej;im.onload=()=>{let w=im.width,h=im.height;const M=1000;if(Math.max(w,h)>M){const k=M/Math.max(w,h);w=Math.round(w*k);h=Math.round(h*k)}
+  const c=document.createElement("canvas"),x=c.getContext("2d");let sc=1,d="";
+  for(let t=0;t<6;t++){c.width=Math.max(1,Math.round(w*sc));c.height=Math.max(1,Math.round(h*sc));x.fillStyle="#fff";x.fillRect(0,0,c.width,c.height);x.drawImage(im,0,0,c.width,c.height);
+    for(let q=.82;q>=.4;q-=.1){d=c.toDataURL("image/jpeg",q);if(d.length<=170000)return res(d)}sc*=.75}
+  res(d)};im.src=r.result};r.readAsDataURL(file)})}
+async function prevImg(){const f=$("mf").files[0];window.IMG=null;$("mp").classList.add("hide");$("mpi").textContent="";if(!f)return;
+  if(!/^image\//.test(f.type)){toast("File harus berupa gambar.");return}
+  $("mpi").textContent="Memproses gambar…";
+  try{const d=await kompres(f);if(d.length>240000){$("mpi").textContent="";toast("Gambar terlalu besar, pilih gambar lain.");return}window.IMG=d;$("mp").src=d;$("mp").classList.remove("hide");$("mpi").textContent="✔ Gambar siap • ±"+Math.round(d.length*0.75/1024)+" KB (dikompres otomatis)"}catch(e){$("mpi").textContent="";toast("Gambar tidak dapat dibaca.")}}
+function sayM(id){const x=MT.find(y=>y._id==id);if(x)say(x.judul+". "+x.isi)}
+function mode(m){mode0(m);const g=MT.filter(x=>x.gaya==m);$("mc").insertAdjacentHTML("beforeend",`<h3 style="margin-top:18px">📌 Materi Tambahan dari Guru</h3>${g.length?g.map(x=>itemHTML(x)).join(""):"<p><i>Belum ada materi tambahan untuk gaya belajar ini.</i></p>"}<button class="btn s o" onclick="panelKelola('${m}')">➕ Tambah / Kelola Materi</button>`)}
+function mjHint(){const j=$("mj").value,L={teks:["ISI MATERI","Tulis penjelasan materi…"],youtube:["TAUTAN YOUTUBE","https://youtu.be/xxxxxxxxxxx"],audio:["TAUTAN FILE AUDIO (.mp3 / .m4a)","https://…/audio.mp3"],gambar:["KETERANGAN GAMBAR (opsional)","Tulis keterangan singkat…"],tautan:["TAUTAN (Drive, artikel, dll.)","https://…"]}[j];$("mil").textContent=L[0];$("mi").placeholder=L[1];$("mfw").classList.toggle("hide",j!="gambar")}
+function panelKelola(g){g=g||"a";window.IMG=null;$("mbx").className="mb mk";
+  $("mc").innerHTML=`<h2>🧰 Kelola Materi Tambahan</h2><p>Semua murid dapat melihat materi di bawah. <b>Menambah atau menghapus materi hanya bisa dengan Paskey guru.</b></p><div class="card"><label>GAYA BELAJAR</label><select id="mg">${Object.keys(GN).map(k=>`<option value="${k}" ${k==g?"selected":""}>${GN[k]}</option>`).join("")}</select><label>JENIS KONTEN</label><select id="mj" onchange="mjHint()"><option value="teks">📝 Teks / penjelasan</option><option value="youtube">▶ Tautan YouTube</option><option value="audio">🎵 Tautan audio</option><option value="gambar">🖼️ Unggah gambar</option><option value="tautan">🔗 Tautan lainnya</option></select><label>JUDUL</label><input id="mt" placeholder="Judul materi" maxlength="100"><div id="mfw" class="hide"><label>PILIH GAMBAR (JPG / PNG / dll.)</label><input type="file" id="mf" accept="image/*" onchange="prevImg()"><img id="mp" class="mimg hide" alt="Pratinjau gambar" onclick="this.classList.toggle('z')"><p id="mpi" style="font-weight:800"></p></div><label id="mil">ISI MATERI</label><textarea id="mi" rows="4" maxlength="4000" placeholder="Tulis penjelasan materi…"></textarea><button class="btn g" onclick="simpanMateri()">💾 Simpan Materi</button></div><h3>📚 Daftar Materi Tambahan (${MT.length})</h3>${MT.length?MT.map(x=>itemHTML(x,true)).join(""):"<p><i>Belum ada materi tambahan.</i></p>"}`;
+  $("modal").classList.add("on")}
+async function simpanMateri(){const g=$("mg").value,j=$("mj").value,t=$("mt").value.trim(),i=$("mi").value.trim();
+  if(!t){toast("Judul wajib diisi.");return}
+  if(j=="gambar"){if(!window.IMG){toast("Pilih gambar terlebih dahulu.");return}if(window.IMG.length>240000){toast("Gambar terlalu besar, pilih gambar lain.");return}}else if(!i){toast("Isi/tautan wajib diisi.");return}
+  if(j!="teks"&&j!="gambar"&&!isUrl(i)){toast("Tautan harus diawali http:// atau https://");return}
+  if(j=="youtube"&&!ytId(i)){toast("Tautan YouTube tidak dikenali.");return}
+  if(!await askPk())return;
+  const d=j=="gambar"?{gaya:g,jenis:j,judul:t,isi:window.IMG,ket:i,ts:Date.now()}:{gaya:g,jenis:j,judul:t,isi:i,ts:Date.now()},id=d.ts+"-"+Math.random().toString(36).slice(2,6);
+  try{if(DB)await DB.collection("materi").doc(id).set(d);else{const a=JSON.parse(localStorage.getItem("materi")||"[]");a.push({...d,_id:id});localStorage.setItem("materi",JSON.stringify(a))}toast("Materi berhasil disimpan ✔");confetti(30)}catch(e){toast("Gagal menyimpan materi.");return}
+  await loadMateri();panelKelola(g)}
+async function hapusMateri(id){if(!await askPk())return;
+  try{if(DB)await DB.collection("materi").doc(id).delete();else{const a=JSON.parse(localStorage.getItem("materi")||"[]").filter(x=>x._id!=id);localStorage.setItem("materi",JSON.stringify(a))}toast("Materi dihapus.")}catch(e){toast("Gagal menghapus materi.");return}
+  await loadMateri();panelKelola()}
+
+// ===== UNDUH EXCEL =====
+async function unduh(nama,teks){try{const d=window.claude?await claude.use("downloads"):null;if(d){await d.save({filename:nama,data:teks});return}}catch(e){}const a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["\ufeff"+teks],{type:"application/vnd.ms-excel"}));a.download=nama;a.click()}
+function xls(){const r=window.ROWS||[],th=["Nama","Kelas","Kelompok","Skor Game (0-10)","Struktur Benar (0-6)","Skor Total (0-100)","Perasaan Awal","Perasaan Akhir","Bantuan","Percobaan","Durasi (detik)","Waktu"];
+  const t=`<html xmlns:x="urn:schemas-microsoft-com:office:excel"><head><meta charset="utf-8"></head><body><table border="1"><tr>${th.map(x=>`<th style="background:#800020;color:#fff">${x}</th>`).join("")}</tr>${r.map(x=>`<tr><td>${esc(x.nama)}</td><td>${esc(x.kelas)}</td><td>${x.kelompok}</td><td>${x.skorGame}</td><td>${x.benarStruktur}</td><td>${pt(x)}</td><td>${esc(x.perasaanAwal||"")}</td><td>${esc(x.perasaanAkhir||"")}</td><td>${x.bantuan}</td><td>${x.percobaan}</td><td>${x.detik}</td><td>${new Date(x.ts).toLocaleString("id-ID")}</td></tr>`).join("")}</table></body></html>`;
+  unduh("nilai-hikayat.xls",t)}
+
+// ===== GOOGLE SHEETS (Apps Script) =====
+const GAS_URL_TETAP="https://script.google.com/macros/s/AKfycbwdJHLe-ki3wZXFhkVFXLf8EsH-Ro0tyadsPWX4euCgwD8ld7CRHixY4kUuMVmHJvOW-g/exec";
+const gasU=()=>{try{return localStorage.getItem("gas")||GAS_URL_TETAP}catch(e){return GAS_URL_TETAP}};
+async function gasKirim(d){const u=gasU();if(!u)return false;try{await fetch(u,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(d)});return true}catch(e){return false}}
+async function gasList(){const u=gasU();if(!u)return null;try{const r=await fetch(u+(u.includes("?")?"&":"?")+"action=list");const j=await r.json();return j.rows||null}catch(e){return null}}
+function gasPanel(){return `<div class="card"><h3>🔗 Hubungkan Google Sheets</h3><p style="font-size:.9rem">Tempel URL Web App Google Apps Script (berakhiran /exec). Status: <b>${gasU()?"✔ terhubung":"belum terhubung"}</b></p><input id="gasu" value="${esc(gasU())}" placeholder="https://script.google.com/macros/s/.../exec"><button class="btn s g" onclick="gasSimpan()">💾 Simpan</button> <button class="btn s b" onclick="gasTes()">🧪 Tes koneksi</button></div>`}
+function gasSimpan(){const u=$("gasu").value.trim();if(u&&!/^https:\/\/script\.google(usercontent)?\.com\//.test(u)){toast("URL harus dari script.google.com");return}try{if(u)localStorage.setItem("gas",u);else localStorage.removeItem("gas")}catch(e){}toast(u?"URL tersimpan ✔":"Koneksi dihapus");guru()}
+async function gasTes(){const u=($("gasu").value||"").trim()||gasU();if(!u){toast("Isi URL terlebih dahulu.");return}try{const r=await fetch(u);const j=await r.json();toast(j.ok?"✔ Terhubung ke Google Sheets!":"Respons tidak sesuai.")}catch(e){toast("Gagal terhubung. Cek URL & akses 'Siapa saja'.")}}
+
+// ===== KARTU PERASAAN & TIMER =====
+var gt=null,at=null;
+const RASA=[["bahagia","😊","Bahagia","#f2c14e,#d9961c"],["terharu","🥹","Terharu","#f08ad0,#c0307f"],["sedih","😢","Sedih","#5ac8fa,#1f6fb0"],["capek","😮‍💨","Capek","#a08ccf,#5a4a8a"],["kesal","😠","Kesal","#ff7a6a,#c0283e"],["semangat","🔥","Semangat","#ff9f5a,#d9531a"]];
+const RT={bahagia:"Senang melihatmu bahagia! 🌈",terharu:"Perasaan yang hangat, simpan baik-baik 💖",sedih:"Terima kasih sudah jujur. Kamu tidak sendirian 🤗",capek:"Tarik napas dulu, kamu sudah berusaha 🌿",kesal:"Tidak apa-apa merasa kesal. Mari coba pelan-pelan 🍃",semangat:"Wah, semangatmu menular! 🚀"};
+const rasaLbl=k=>{const r=RASA.find(x=>x[0]==k);return r?r[1]+" "+r[2]:"-"};
+function tanyaRasa(tipe){return new Promise(res=>{
+  $("ft").textContent=tipe=="awal"?"💌 Kartu Perasaan":"💌 Kartu Perasaan Akhir";
+  $("fs").textContent=tipe=="awal"?"Bagaimana perasaanmu sekarang, sebelum memulai game? Pilih satu kartu.":"Bagaimana perasaanmu setelah mengerjakan asesmen? Pilih satu kartu.";
+  $("fg").innerHTML=RASA.map(r=>{const c=r[3].split(",");return `<div class="fc" data-k="${r[0]}" style="background:linear-gradient(${c[0]},${c[1]})"><span class="em">${r[1]}</span>${r[2]}</div>`}).join("");
+  $("fm").classList.add("on");
+  $("fg").onclick=e=>{const c=e.target.closest(".fc");if(!c)return;const k=c.dataset.k;sfx("ok");toast(RT[k]);$("fm").classList.remove("on");$("fg").onclick=null;res(k)}})}
+function updGT(){const r=Math.max(0,30-(Date.now()-S.gt0)/1000),s=Math.ceil(r);$("tbar").style.width=(r/30*100)+"%";$("tsec").textContent="⏱ "+s+" dtk";$("tbar").classList.toggle("warn",s<=5);$("tsec").style.color=s<=5?"#ff6b6b":""}
+function mulaiGT(){clearInterval(gt);S.gt0=Date.now();S.lt=0;updGT();gt=setInterval(()=>{const r=30-(Date.now()-S.gt0)/1000,s=Math.ceil(r);updGT();if(s<=5&&s>0&&S.lt!==s){S.lt=s;sfx("pop")}if(r<=0){clearInterval(gt);jawab(null)}},250)}
+function updAT(){const r=Math.max(0,120-(Date.now()-S.at0)/1000),s=Math.ceil(r);$("abar").style.width=(r/120*100)+"%";$("asec").textContent="⏳ "+Math.floor(s/60)+":"+String(s%60).padStart(2,"0");$("asec").style.color=s<=10?"#ff6b6b":"";$("abar").classList.toggle("warn",s<=10)}
+function startAT(){clearInterval(at);S.at0=Date.now();S.habis=false;S.ls=0;updAT();at=setInterval(()=>{const r=120-(Date.now()-S.at0)/1000,s=Math.ceil(r);updAT();if(s<=10&&s>0&&S.ls!==s){S.ls=s;sfx("pop")}if(r<=0){clearInterval(at);waktuHabis()}},250)}
+function waktuHabis(){S.habis=true;toast("⏰ Waktu asesmen habis! Susunanmu dikumpulkan.");kumpul(true)}
+// ===== PAPAN PERINGKAT =====
+
+// ===== MUSIK PENGIRING (3 instrumen) =====
+let vol=.5,inst="gamelan";
+function saveMus(){try{localStorage.setItem("mus",JSON.stringify({vol,inst,on:musicOn}))}catch(e){}}
+function pluck(f,t){tone(f,t,.9,"triangle",1.1,mus);tone(f*2,t,.3,"sine",.4,mus)}
+function flute(f,t,d){const a=ac(),o=a.createOscillator(),l=a.createOscillator(),lg=a.createGain(),g=a.createGain();o.type="sine";o.frequency.value=f;l.frequency.value=5.2;lg.gain.value=f*.012;l.connect(lg);lg.connect(o.frequency);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.8,t+.25);g.gain.linearRampToValueAtTime(.5,t+d*.7);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g);g.connect(mus);o.start(t);l.start(t);o.stop(t+d+.05);l.stop(t+d+.05)}
+function barPlay(){if(!musicOn)return;const a=ac();if(!a)return;const t=a.currentTime+.05;
+  if(inst=="gamelan"){const m=MEL[bar++%4];tone(146.83,t,3.9,"sine",.6,mus);tone(220,t,3.9,"sine",.3,mus);m.forEach((n,i)=>tone(SC[n],t+i*.5,.9,"triangle",1,mus));tone(SC[m[0]]*2,t+2,1.2,"sine",.4,mus)}
+  else if(inst=="kecapi"){const P=[220,261.63,293.66,349.23,392,440,523.25],pat=[[0,2,4,2,5,4,2,1],[1,3,5,3,6,5,3,2],[0,2,4,6,4,2,5,3]][bar++%3];pat.forEach((n,i)=>pluck(P[n],t+i*.5));tone(110,t,3.9,"sine",.3,mus)}
+  else{const F=[392,440,523.25,587.33,659.25,783.99],pat=[[0,2,3,2,4,3,1,2],[3,4,5,4,3,2,0,1]][bar++%2];[0,2,4,6].forEach((i,k)=>flute(F[pat[i]],t+k,1.8));tone(130.81,t,3.9,"sine",.35,mus)}}
+function setVol(v){vol=v;saveMus();if(master)master.gain.value=v==0?0:.6;if(mus)mus.gain.value=v*.18;const e=$("vv");if(e)e.textContent=Math.round(v*100)+"%"}
+function pilihInst(i){inst=i;musicOn=true;musicStarted=true;saveMus();musik(true);panelMusik()}
+function panelMusik(){if(musicOn&&!musicStarted){musicStarted=true;musik(true)}
+  $("mbx").className="mb mav";
+  $("mc").innerHTML=`<h2>🎶 Musik Pengiring Belajar</h2><p>Pilih alat musik, atur volume, atau matikan musik.</p><button class="btn ${musicOn?"g":"x"}" onclick="musik(!musicOn);panelMusik()">${musicOn?"🔊 Musik: HIDUP":"🔇 Musik: MATI"}</button><div class="grid g3" style="margin:16px 0">${[["gamelan","🥁","Gamelan","b"],["kecapi","🪕","Kecapi Petik","o"],["suling","🪈","Suling Bambu","g"]].map(x=>`<button class="btn ${x[3]}" style="${inst==x[0]?"outline:5px solid #fff":""}" onclick="pilihInst('${x[0]}')">${x[1]} ${x[2]}${inst==x[0]?" ✔":""}</button>`).join("")}</div><label>Volume: <span id="vv">${Math.round(vol*100)}%</span></label><input type="range" min="0" max="100" value="${Math.round(vol*100)}" oninput="setVol(this.value/100)">`;
+  $("modal").classList.add("on")}
+try{const m=JSON.parse(localStorage.getItem("mus")||"{}");if(m.vol!=null)vol=m.vol;if(m.inst)inst=m.inst;if(m.on===false)musicOn=false}catch(e){}
+$("snd").textContent=musicOn?"🎵":"🔇";
+// ===== KARTU APRESIASI =====
+const TIER=[
+{m:90,e:"👑",t:"Maharaja Ilmu",c:"#b8860b,#5c3a00",p:["Daulat tuanku! Pemahamanmu menembus pintu istana tertinggi.","Sempurna dan gemilang. Ilmumu layak dikisahkan dalam hikayat!","Luar biasa! Kamu menguasai unsur dan struktur hikayat dengan sangat baik."],s:"Bagikan ilmumu kepada teman yang masih berjuang!"},
+{m:80,e:"🏅",t:"Pujangga Istana",c:"#7b45b0,#2c0d45",p:["Analisismu tajam dan teliti, tinggal selangkah lagi menuju mahkota!","Hebat! Kamu mampu membedakan unsur intrinsik dan ekstrinsik dengan baik.","Sastrawan istana pun akan terkesan dengan jawabanmu."],s:"Periksa kembali kutipan yang masih keliru agar sempurna."},
+{m:70,e:"🛡️",t:"Hulubalang Gagah",c:"#1f6fb0,#0a2a4a",p:["Gagah berani! Pemahamanmu sudah kokoh seperti benteng istana.","Kerja bagus! Teruslah mengasah ketelitianmu membaca bukti dalam teks.","Kamu sudah berada di jalur yang tepat, ksatria!"],s:"Ulangi materi Visual untuk memperkuat bagian yang tertukar."},
+{m:60,e:"⚔️",t:"Ksatria Muda",c:"#1f9a86,#06342d",p:["Fondasimu sudah terbentuk, tinggal diasah lagi!","Semangat yang bagus! Dengan sedikit latihan kamu akan melesat.","Langkah awal yang baik, ksatria muda."],s:"Gunakan Kartu Ciri saat menyusun struktur agar lebih mantap."},
+{m:40,e:"📜",t:"Pelajar Tekun",c:"#d9531a,#5a1d06",p:["Setiap ksatria besar bermula dari latihan. Kamu sedang menuju ke sana!","Jangan berkecil hati, perbaiki langkahmu dengan membaca materi sekali lagi.","Usahamu sangat dihargai. Coba pahami lagi perbedaan unsur di dalam dan di luar teks."],s:"Dengarkan materi di Ruang Auditori, lalu coba lagi."},
+{m:0,e:"🌱",t:"Calon Ksatria",c:"#c0307f,#4a0d2c",p:["Jangan menyerah! Setiap pendekar pernah terjatuh sebelum bangkit.","Terima kasih sudah berani mencoba. Pelajari materi sekali lagi, kamu pasti bisa!","Kisah hebat selalu diawali perjuangan. Mari belajar bersama Bapak/Ibu guru."],s:"Tanyakan bagian yang sulit kepada gurumu ya."}];
+function apre(r){const p=pt(r),T=TIER.find(x=>p>=x.m),h=[...String(r.nama)].reduce((a,c)=>a+c.charCodeAt(0),0)+p;return{p,T,txt:T.p[h%T.p.length]}}
+function apreHTML(r){const a=apre(r),T=a.T,c=T.c.split(",");return `<div style="background:linear-gradient(160deg,${c[0]},${c[1]});border:4px solid var(--gold);border-radius:22px;padding:18px;text-align:center;box-shadow:inset 0 4px 0 #fff4,0 8px 0 #0006"><div style="font-size:3.4rem;animation:bob 2s infinite">${T.e}</div><div class="badge">KARTU APRESIASI</div><h2 style="color:var(--gold)">${T.t}</h2><b>${esc(r.nama)}</b><div style="font:900 2.6rem 'Cinzel Decorative',serif;color:var(--gold)">${a.p}<small style="font-size:1rem">/100</small></div><p>🎮 Game ${r.skorGame}/10 • 🗝️ Struktur ${r.benarStruktur}/6</p>${r.perasaanAkhir?`<p>💌 Perasaan: ${rasaLbl(r.perasaanAwal)} ➜ ${rasaLbl(r.perasaanAkhir)}</p>`:""}<p style="font-size:1.1rem">“${a.txt}”</p><small>💡 ${T.s}</small></div>`}
+function showApre(r){const a=apre(r);$("mbx").className="mb mk";$("mc").innerHTML=apreHTML(r)+`<p style="text-align:center"><button class="btn g" onclick="tutup()">🏆 Lihat Papan Peringkat</button></p>`;$("modal").classList.add("on");confetti(a.p>=80?110:a.p>=60?70:35)}
+// ===== HAPUS HASIL (GURU) =====
+const GURU_PIN="guru1234";
+const isTeacher=()=>DB?!!(USER&&USER.isOwner()):!!window.pinOK;
+function pinUI(){$("guru").innerHTML=`<div class="card"><label>PIN GURU</label><input id="pin" type="password" placeholder="Masukkan PIN"><button class="btn o" onclick="cekPin()">Masuk</button></div>`}
+function cekPin(){if($("pin").value===GURU_PIN){window.pinOK=1;guru()}else toast("PIN salah.")}
+let delArm=0;
+async function hapusSemua(b){if(!delArm){delArm=1;b.textContent="⚠️ Klik sekali lagi untuk MENGHAPUS SEMUA";setTimeout(()=>{delArm=0;b.textContent="🗑️ Hapus Semua Hasil"},5000);return}
+  delArm=0;b.textContent="Menghapus…";let err=0;
+  try{if(DB){const s=await DB.collection("submissions").get();for(const d of s.docs){try{await DB.collection("submissions").doc(d.id).delete()}catch(e){err++}}}}catch(e){err++}
+  try{localStorage.removeItem("sub");localStorage.removeItem("me")}catch(e){}
+  window.pcf=0;toast(err?"Sebagian data gagal dihapus.":(gasU()?"Data di perangkat dihapus. Untuk Google Sheets, jalankan fungsi kosongkanData di Apps Script.":"Semua hasil dihapus. Siap untuk kelas baru! ✔"));guru();if($("s9").classList.contains("on"))papan()}
+async function hapusSatu(i,b){const r=ROWS[i];if(b.dataset.a!="1"){b.dataset.a="1";b.textContent="⚠️ Klik lagi untuk menghapus";return}
+  try{if(DB&&r._id)await DB.collection("submissions").doc(r._id).delete();const a=JSON.parse(localStorage.getItem("sub")||"[]").filter(x=>x.ts!=r.ts);localStorage.setItem("sub",JSON.stringify(a));toast("Hasil murid dihapus.")}catch(e){toast("Gagal menghapus.")}guru()}
+
+
+const esc=t=>String(t==null?"":t).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const meKey=r=>(r.nama+"|"+r.kelas+"|"+r.kelompok).toLowerCase();
+function getMe(){let me=null;try{me=JSON.parse(localStorage.getItem("me")||"null")}catch(e){}if(!me&&S.nama)me={nama:S.nama,kelas:S.kelas,kelompok:S.kel};return me}
+function meCard(L){const me=getMe();
+  if(!me)return "<div class='card'>👋 Kerjakan game dan asesmen, lalu skormu akan tampil di sini.</div>";
+  const k=meKey(me),r=L.find(x=>meKey(x)==k);
+  if(!r)return `<div class="card">Halo <b>${esc(me.nama)}</b>! Selesaikan game dan asesmen, lalu klik <b>Kumpulkan ke Guru</b> agar skormu tampil di papan.</div>`;
+  const srt=[...L].sort((a,b)=>b.p-a.p),rank=srt.findIndex(x=>meKey(x)==k)+1;
+  return `<div class="card" style="border-color:#43d17b;display:flex;gap:14px;align-items:center;flex-wrap:wrap"><svg class="ch happy" style="width:90px"><use href="#${MC[r.kelompok-1]}"/></svg><div style="flex:1;min-width:200px"><span class="badge">SKORMU</span><div style="font:900 2.6rem 'Cinzel Decorative',serif;color:var(--gold)">${r.p}<small style="font-size:1rem">/100</small></div><b>${esc(r.nama)}</b> • Kelas ${esc(r.kelas)} • Kelompok ${r.kelompok}<br>🎮 Game: ${r.skorGame}/10 &nbsp; 🗝️ Struktur: ${r.benarStruktur}/6 &nbsp; 🃏 Bantuan: ${r.bantuan}<br>🏅 Peringkat <b>${rank}</b> dari ${L.length} murid<br><small>${window.sentOk===false?"Tersimpan di perangkat ini.":"✔ Hasil tercatat untuk guru."}</small></div></div><div style="margin:10px 0">${apreHTML(r)}</div>`}
+window.LBL=[];
+function indiv(L){if(!L.length)return "";window.LBL=[...L].sort((a,b)=>b.p-a.p);
+  return `<div class="card"><h3>🌟 Peringkat Semua Murid <small id="lbc"></small></h3><p style="font-size:.9rem;margin:4px 0 10px">Semua murid dapat saling melihat skor. Saring berdasarkan kelompok atau cari nama.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><select id="lbk" onchange="drawIndiv()" style="flex:1;min-width:140px"><option value="0">Semua kelompok</option>${[1,2,3,4,5,6].map(n=>`<option value="${n}">Kelompok ${n}</option>`).join("")}</select><input id="lbs" oninput="drawIndiv()" placeholder="🔍 Cari nama / kelas" style="flex:2;min-width:160px"></div><div style="overflow-x:auto"><table id="lbt"></table></div></div>`}
+function drawIndiv(){const me=getMe(),k=me?meKey(me):"",kel=+(($("lbk")||{}).value||0),q=(($("lbs")||{}).value||"").toLowerCase();
+  const rank=new Map(window.LBL.map((r,i)=>[meKey(r),i+1]));
+  const rows=window.LBL.filter(r=>(!kel||r.kelompok==kel)&&(!q||(r.nama+" "+r.kelas).toLowerCase().includes(q)));
+  $("lbc").textContent="("+rows.length+" murid)";
+  $("lbt").innerHTML="<tr><th>#</th><th>Nama</th><th>Kelas</th><th>Kel</th><th>Game</th><th>Struktur</th><th>Skor</th><th>Gelar</th></tr>"+(rows.map(r=>{const T=apre(r).T,m=meKey(r)==k;return `<tr style="${m?"background:#f2c14e55;font-weight:900":""}"><td>${rank.get(meKey(r))}</td><td>${esc(r.nama)}${m?" (kamu)":""}</td><td>${esc(r.kelas)}</td><td>${r.kelompok}</td><td>${r.skorGame}/10</td><td>${r.benarStruktur}/6</td><td><b>${r.p}</b></td><td>${T.e} ${T.t}</td></tr>`}).join("")||"<tr><td colspan='8'>Tidak ada murid yang cocok.</td></tr>")}
+function pilihKel(n){if(!$("lbk"))return;$("lbk").value=n;drawIndiv();$("lbt").scrollIntoView({behavior:"smooth",block:"center"})}
+try{const me=JSON.parse(localStorage.getItem("me")||"null");if(me){$("nama").value=me.nama||"";$("kelas").value=me.kelas||"";$("kel").value=me.kelompok||""}}catch(e){}
+
+const pt=r=>Math.round(r.skorGame*5+r.benarStruktur*50/6);
+async function papan(){
+  const g=$("pp");g.innerHTML="<div class='card'>Memuat peringkat…</div>";let rows=[];
+  try{if(DB){const s=await DB.collection("submissions").get();rows=s.docs.map(d=>d.data())}else{const g=await gasList();if(g)rows=g}}catch(e){}
+  if(!rows.length){try{rows=JSON.parse(localStorage.getItem("sub")||"[]")}catch(e){}}
+  const best={};rows.forEach(r=>{if(!r||!r.nama)return;const k=(r.nama+"|"+r.kelas+"|"+r.kelompok).toLowerCase(),p=pt(r);if(!best[k]||p>best[k].p)best[k]={...r,p}});
+  const L=Object.values(best);
+  const gr=[1,2,3,4,5,6].map(n=>{const m=L.filter(r=>r.kelompok==n).sort((a,b)=>b.p-a.p);return{n,c:m.length,p:m.length?m.reduce((a,r)=>a+r.p,0)/m.length:0,top:m[0]}}).sort((a,b)=>b.p-a.p||b.c-a.c);
+  const md=["🥇","🥈","🥉","4️⃣","5️⃣","6️⃣"];
+  g.innerHTML=meCard(L)+gr.map((x,i)=>`<div class="lb" onclick="pilihKel(${x.n})" style="cursor:pointer;background:linear-gradient(135deg,${COL[x.n-1]},#2a0810);animation-delay:${i*.12}s"><div class="md">${md[i]}</div><svg class="ch"><use href="#${MC[x.n-1]}"/></svg><div class="bd"><b>Kelompok ${x.n}</b> <small>• ${x.c} murid mengumpulkan${x.top?" • bintang: "+esc(x.top.nama.split(" ")[0]):""}</small><div class="bar"><b style="width:${x.p}%"></b></div></div><div class="pt">${Math.round(x.p)}</div></div>`).join("")+(L.length?"":"<div class='card'>Belum ada kelompok yang mengumpulkan. Jadilah yang pertama! 👑</div>")+indiv(L);
+  if(isTeacher())g.innerHTML+=`<p><button class="btn s x" onclick="hapusSemua(this)">🗑️ Hapus Semua Hasil</button></p>`;if(L.length&&$("lbt"))drawIndiv();if(L.length&&!window.pcf){window.pcf=1;confetti(40)}
+}
+</script>
+</body>
+</html>
